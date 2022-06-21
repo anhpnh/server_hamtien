@@ -1,0 +1,274 @@
+<html>
+
+<head>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/fontawesome.min.js"></script>
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script src="socket.io/socket.io.js"></script>
+    <title>GỌI SỐ QUẦY 3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .button {
+            width: 418px;
+            height: 100px;
+            margin-bottom: 5px;
+            display: inline-block;
+            font-size: 60px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            text-shadow: 2px 2px 2px #676868;
+            outline: none;
+            color: #fff;
+            background-color: #0b92ca;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 5px #999;
+
+        }
+
+        .button:hover {
+            background-color: #07709c
+        }
+
+        .button:active {
+            background-color: #07709c;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        .textview {
+            width: 418;
+            height: 200;
+            margin: 5;
+            font-size: 120;
+            font-weight: bold;
+            padding: 5;
+            border: solid 1;
+            border-radius: 5px;
+            color: #b40606;
+            text-align: center;
+            text-shadow: 2px 2px 2px #676868;
+            background: #ffffff;
+        }
+
+        .main {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .titlenumber {
+            font-size: 50;
+            font-weight: bold;
+            color: #120ed4;
+            text-align: center;
+            text-shadow: 2px 2px 2px #858686;
+            margin-top: 60;
+        }
+
+        .soluotdoi,
+        .sodanggoi {
+            font-size: 25;
+            font-weight: bold;
+            display: flex;
+            color: #120ed4;
+            text-shadow: 1px 1px 2px #858686;
+            margin-top: 2;
+            margin-bottom: 5;
+            padding: 2px;
+        }
+
+        .bg1 {
+            background: #607d8b00;
+            width: 418;
+            border-radius: 5px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            color: #D71921;
+            font-size: 35px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 2px 2px 2px #a9acac;
+            justify-content: center;
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            background-image: linear-gradient(#0b92ca, #7cdaff00);
+        }
+
+        .container {
+            display: inline-block;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            background-image: linear-gradient(#f3eebb00, #6acbf2de);
+            width: 100%;
+            height: 100%;
+            text-align: center;
+
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="http://192.168.1.172:3000/images/logo_binhthuan.jpg" height="100px" />
+            UBND PHƯỜNG HÀM TIẾN - GỌI SỐ THỨ TỰ
+        </div>
+    </div>
+    <div class="main">
+        <div class="titlenumber">
+            QUẦY SỐ 3
+        </div>
+
+        <form name="form">
+            <input class="textview" name="textview" disabled>
+        </form>
+        <div class="bg1">
+            <div class="soluotdoi">
+                - Tổng số lượt đợi: <p id="soluotdoi" style="padding-left: 5; color: #120ed4;"></p>
+            </div>
+            <div class="sodanggoi">
+                - Số đang đến lượt: <p id="sodanggoi" style="padding-left: 5;"></p>
+            </div>
+        </div>
+        <table>
+
+            <tr>
+                <td colspan="4"><button class="button" id="btnNext">Kế tiếp</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4"><button class="button" id="btnCall">Gọi</button>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</body>
+<script>
+
+    //Gọi lên server socket io
+    let socket = io("/");
+
+    let n = 0;
+    let host = "192.168.1.172"; //Thay đổi theo IP của server
+    let apinextnumber = "http://" + host + ":1880/ubnd_hamtien_apinextnumber3";//Thay đổi theo api từng quầy
+    let apicallnumber = "http://" + host + ":1880/ubnd_hamtien_apicallnumber3";//Thay đổi theo api từng quầy
+    let apisodanggoi = "http://" + host + ":1880/ubnd_hamtien_apisodanggoi3";//Thay đổi theo api từng quầy
+    let apisoluotdoi = "http://" + host + ":1880/ubnd_hamtien_apisoluotdoi3";//Thay đổi theo api từng quầy
+    let maQuay = "quayso3"; //Thay đổi theo mã quầy
+    let goiSo = { "goiSo": true };
+    let huySo = { "huySo": true };
+    let soKeTiep = "";
+    let soDangGoi = "";
+
+    $(document).ready(() => {
+        console.log("ready!");
+
+        // //Lấy stt từ database mỗi 1s
+        setInterval(function () {
+            waiting();
+        }, 1000);
+
+        function waiting() {
+            $.ajax({
+                url: apisodanggoi,
+                data: { "message": "apisodanggoi1" },
+                type: 'GET',
+                success: function (data) {
+                    if (soKeTiep != "Hết số") {
+                        document.getElementById("sodanggoi").innerText = data;
+                    } else {
+                        document.getElementById("sodanggoi").innerText = "...";
+                    }
+
+                }
+            });
+            $.ajax({
+                url: apisoluotdoi,
+                data: { "message": "apisoluotdoi1" },
+                type: 'GET',
+                success: function (data) {
+                    document.getElementById("soluotdoi").innerText = data;
+                }
+            });
+        }
+
+        //Xy ly khi bam Button Ke Tiep
+        $('#btnNext').click(function (e) {
+            e.preventDefault();
+            $("#btnNext").attr("disabled", true);
+            $.ajax({
+                url: apinextnumber,
+                data: { "maQuay": maQuay },
+                type: 'POST',
+                success: function (data) {
+                    n = 0;
+                    soKeTiep = data;
+                    document.form.textview.value = soKeTiep;
+                    chuNhapNhay();
+                    socket.emit("client-send-nextnumber", { maQuay: maQuay, nextNumber: soKeTiep });
+                    if (soKeTiep != "Hết số") {
+                        document.getElementById("btnCall").disabled = false;
+                    }
+
+                }
+            });
+            $("#btnNext").removeAttr("disabled");
+        });
+
+        //Xy ly khi bam Button Goi So
+        $('#btnCall').click(function (e) {
+            soDangGoi = document.form.textview.value;
+            let bol = soDangGoi.includes("Hết số");
+            e.preventDefault();
+            $("#btnCall").attr("disabled", true);
+            if (bol != true && soDangGoi != "") {
+                $.ajax({
+                    url: apicallnumber,
+                    data: { "maQuay": maQuay, "soDangGoi": soDangGoi },
+                    type: 'POST',
+                    success: function (data) {
+                        n = n + 1;
+                        socket.emit("client-send-nextnumber", { maQuay: maQuay, nextNumber: soKeTiep });
+                        alert(data + ": " + soDangGoi + " lần " + n);
+                    }
+                });
+            }
+            $("#btnCall").removeAttr("disabled");
+
+        });
+
+        function chuNhapNhay() {
+            for (let i = 0; i < 1; i++) {
+                $(".textview").fadeIn(1000).fadeOut(500).fadeIn(1000);
+            }
+        }
+
+
+    });
+
+
+
+</script>
+
+</html>

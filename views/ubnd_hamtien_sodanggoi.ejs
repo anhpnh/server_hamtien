@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Số Đang Gọi</title>
+    <script src="/js/jquery.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="/js/xuly.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        .container {
+            display: inline-block;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            background-image: linear-gradient(#f3eebb00, #6acbf2de);
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        #customers td {
+            font-size: 60px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #fff;
+        }
+
+        #customers th {
+            border: 1px solid #fff;
+            padding: 8px;
+        }
+
+        #customers tr {
+            background-color: transparent;
+            border: 1px solid #ddd;
+            color: rgb(187, 8, 8);
+            text-shadow: 2px 2px 2px #a9acac;
+
+        }
+
+        #customers th {
+            height: 30px;
+            width: fit-content;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            background-color: #0094CE;
+            color: rgb(0, 0, 0);
+            text-shadow: 2px 2px 2px #a9acac;
+        }
+
+        #quangcao {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        #quangcao td {
+            font-size: 100px;
+            font-weight: bold;
+            text-align: center;
+
+        }
+
+        #quangcao tr {
+            background-color: transparent;
+            color: rgb(187, 8, 8);
+        }
+
+        #quangcao tr:hover {
+            background-color: transparent;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            color: #D71921;
+            font-size: 35px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 2px 2px 2px #a9acac;
+            justify-content: center;
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            background-image: linear-gradient(#0b92ca, #7cdaff00);
+        }
+
+        .sott {
+            font-family: Tahoma;
+            font-weight: bold;
+            color: #d80404;
+            text-shadow: 5px 5px 5px #676868;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <img src="http://192.168.1.172:3000/images/logo_binhthuan.jpg" height="80px" />
+            UBND PHƯỜNG HÀM TIẾN - HỆ THỐNG LẤY SỐ THỨ TỰ
+        </div>
+
+        <div
+            style="height: 80%; width: 100%; display: flex; float: left; padding: 20px; text-align: center; justify-content: center;">
+
+            <div style="width: 60%; height: 100%; padding-right: 10px;">
+                <table id="quangcao">
+
+                    <tr>
+                        <td style="text-align: center; justify-content: center;"><iframe width="99%" height="98%"
+                                src="https://www.youtube.com/embed/73_Ivq4JH_c?&Version=3&autoplay=1&showinfo=0&loop=1&playlist=73_Ivq4JH_c"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+
+                    </tr>
+
+
+                </table>
+            </div>
+
+            <div style="width: 30%; height: 100%; padding-right: 40px;">
+                <table id="customers">
+                    <tr>
+                        <th>Quầy Số </th>
+                        <th>Đang Gọi</th>
+
+
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td id="sott1">....</td>
+
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td id="sott2">....</td>
+
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td id="sott3">....</td>
+
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td id="sott4">....</td>
+
+                    </tr>
+                    <!-- <tr>
+                        <td>5</td>
+                        <td id="sott5">....</td>
+
+                    </tr> -->
+
+
+                </table>
+            </div>
+
+
+
+        </div>
+
+       
+
+
+    </div>
+
+
+
+</body>
+
+</html>

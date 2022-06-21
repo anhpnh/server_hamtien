@@ -1,0 +1,4270 @@
+[{
+    "id": "830a0b8.8d689f8",
+    "type": "tab",
+    "label": "MH Goi So",
+    "disabled": false,
+    "info": ""
+}, {
+    "id": "8f47c528.a3b0f8",
+    "type": "tab",
+    "label": "API Lay So TT - Phu Long",
+    "disabled": false,
+    "info": ""
+}, {
+    "id": "af96c0fb.ac388",
+    "type": "tab",
+    "label": "apinextnumber1&2",
+    "disabled": false,
+    "info": ""
+}, {
+    "id": "63eee8e.74f4718",
+    "type": "tab",
+    "label": "apinextnumber3&4",
+    "disabled": false,
+    "info": ""
+}, {
+    "id": "17dbff45.60ac31",
+    "type": "tab",
+    "label": "api soluotdoi",
+    "disabled": false,
+    "info": ""
+}, {
+    "id": "b3aa8abf.87e028",
+    "type": "tab",
+    "label": "api sodangdenluot",
+    "disabled": false,
+    "info": ""
+}, {
+    "id": "f584d3bb.6d293",
+    "type": "tab",
+    "label": "api danh gia",
+    "disabled": false,
+    "info": ""
+}, {
+    "id": "a10686a2.ef2738",
+    "type": "tab",
+    "label": "report api",
+    "disabled": false,
+    "info": ""
+}, {
+    "id": "e3414c8a.71b97",
+    "type": "tab",
+    "label": "report layout",
+    "disabled": false,
+    "info": ""
+}, {
+    "id": "41704b59.03c774",
+    "type": "MySQLdatabase",
+    "name": "",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "db": "ubnd_duclinh",
+    "tz": "",
+    "charset": ""
+}, {
+    "id": "87906759.e30018",
+    "type": "users_config",
+    "appPath": "/users",
+    "jwtCookieName": "nr.nodeUsers.jwt",
+    "jwtHttpsOnly": false
+}, {
+    "id": "5aff3e0b.2e018",
+    "type": "http in",
+    "z": "830a0b8.8d689f8",
+    "name": "",
+    "url": "/ubndduclinh",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 110,
+    "y": 40,
+    "wires": [
+        ["917c1939.c81c78"]
+    ]
+}, {
+    "id": "572fed82.d0a9c4",
+    "type": "http response",
+    "z": "830a0b8.8d689f8",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 590,
+    "y": 40,
+    "wires": []
+}, {
+    "id": "917c1939.c81c78",
+    "type": "template",
+    "z": "830a0b8.8d689f8",
+    "name": "ubnd duclinh",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "<!DOCTYPE html>\n<html>\n\n<head>\n    <title>UBND HUYỆN ĐỨC LINH - HỆ THỐNG LẤY SỐ THỨ TỰ</title>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js\"\n        integrity=\"sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==\"\n        crossorigin=\"anonymous\"></script>\n    <style>\n        .container {\n            display: inline-block;\n            position: fixed;\n            top: 0;\n            bottom: 0;\n            left: 0;\n            right: 0;\n            margin: auto;\n            background-image: linear-gradient(#f3eebb00, #6acbf2de);\n            width: 100%;\n            height: 100%;\n            text-align: center;\n\n        }\n\n        #customers {\n            font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\n            width: 100%;\n            height: 100%;\n        }\n\n        .button {\n            width: 100%;\n            height: 99%;\n            display: inline-block;\n            font-size: 60px;\n            font-weight: bold;\n            cursor: pointer;\n            text-align: center;\n            text-shadow: 2px 2px 2px #020202;\n            text-decoration: none;\n            outline: none;\n            color: #fff;\n            background-color: #0b92ca;\n            border: none;\n            border-radius: 15px;\n            box-shadow: 0 5px #999;\n\n        }\n\n        .button:hover {\n            background-color: #07709c\n        }\n\n        .button:active {\n            background-color: #0b6a92;\n            box-shadow: 0 5px #666;\n            transform: translateY(4px);\n        }\n\n        #sott1,\n        #sott2,\n        #sott3 {\n            width: 500px;\n            border: none;\n            padding: 0;\n            margin: 0;\n        }\n\n        .header {\n            display: flex;\n            align-items: center;\n            flex-direction: row;\n            color: #D71921;\n            font-size: 35px;\n            font-weight: bold;\n            text-align: center;\n            text-shadow: 2px 2px 2px #fcfcfc;\n            justify-content: center;\n            width: 100%;\n            height: 100px;\n            padding: 10px;\n            background-image: linear-gradient(#0b92ca, #7cdaff00);\n            /* background: url('http://bocongan.gov.vn/Publishing_Resources/web/portal/images/bg-head.png') repeat-x top center; */\n        }\n\n        .block {\n            height: 10px;\n            clear: both;\n        }\n\n        img {\n            margin: 6px;\n        }\n\n        p {\n            font-size: 40px;\n            color: #f3eebb;\n        }\n        #print1,\n        #print2,\n        #print3, \n        #print4 {\n            font-size: 25px;\n            color: #ffffff;\n            font-style: italic;\n        }\n    </style>\n</head>\n\n<body>\n\n    <div class=\"container\">\n\n        <div class=\"header\">\n            <img src=\"http://192.168.1.172:3000/images/logo_binhthuan.jpg\" height=\"100px\" />\n            UBND HUYỆN ĐỨC LINH - HỆ THỐNG LẤY SỐ THỨ TỰ\n        </div>\n        <div class=\"block\"></div>\n\n        <div style=\"height: 80%; width: 100%; display: flex; float: left; text-align: center; justify-content: center;\">\n\n            <div>\n                <table id=\"customers\">\n                    <tr>\n                        <td id=\"sott1\"><button class=\"button\" id=\"btn1\" value=\"\"><i class=\"fa fa-hand-o-right\"\n                                    aria-hidden=\"true\"></i>QUẦY\n                                SỐ 1<p></p>\n                                <p id=\"print1\"></p>\n                                </button></td>\n                        <td id=\"sott2\"><button class=\"button\" id=\"btn2\"><i class=\"fa fa-hand-o-right\"\n                                    aria-hidden=\"true\"></i>QUẦY\n                                SỐ 2<p></p>\n                                <p id=\"print2\"></p>\n                                </button></td>\n                    </tr>\n                    <tr>\n                        <td id=\"sott3\"><button class=\"button\" id=\"btn3\"><i class=\"fa fa-hand-o-right\"\n                                    aria-hidden=\"true\"></i>QUẦY SỐ 3<p></p>\n                                    <p id=\"print3\"></p>\n                                    </button></td>\n                        <td id=\"sott4\"><button class=\"button\" id=\"btn4\"><i class=\"fa fa-hand-o-right\"\n                                    aria-hidden=\"true\"></i>QUẦY SỐ 4<p></p>\n                                    <p id=\"print4\"></p>\n                                    </button></td>\n                    </tr>\n\n                </table>\n            </div>\n\n\n\n        </div>\n    </div>\n\n\n\n\n</body>\n<script>\n    let host = 'http://localhost:1880/';\n    let apilayso1 = host + \"ubnd_duclinh_apilayso1\";\n    let apilayso2 = host + \"ubnd_duclinh_apilayso2\";\n    let apilayso3 = host + \"ubnd_duclinh_apilayso3\";\n    let apilayso4 = host + \"ubnd_duclinh_apilayso4\";\n\n    $(document).ready(function () {\n        console.log(\"ready!\");\n\n        //button btn1 click - quay so 1\n        $(\"#btn1\").click(() => {\n            $(\"#btn1\").attr(\"disabled\", true);\n            //console.log(\"btn1 disabled\");\n            $(\"#print1\").text(\"Đang in phiếu...\");\n            $.ajax({\n                url: apilayso1,\n                data: { \"maquay\": \"quayso1\", \"topic\": \"SELECT MAX(stt.maSoTT) AS maxSTT FROM sothutu stt WHERE stt.maPhong='1000' AND DATE(stt.ngayTao) = CURDATE();\" },\n                type: 'POST',\n                success: function (data) {\n                    if (data !== 1000) {\n                        //console.log(\"btn1 enabled\");\n                        console.log(data);\n                        $(\"#print1\").text(\"\");\n                        $(\"#btn1\").removeAttr('disabled');\n\n                    }\n                }\n            });\n        });\n\n        //button btn2 click - quay so 2\n        $(\"#btn2\").click(() => {\n            $(\"#btn2\").attr(\"disabled\", true);\n            //console.log(\"btn1 disabled\");\n            $(\"#print2\").text(\"Đang in phiếu...\");\n            $.ajax({\n                url: apilayso2,\n                data: { \"maquay\": \"quayso2\", \"topic\": \"SELECT MAX(stt.maSoTT) AS maxSTT FROM sothutu stt WHERE stt.maPhong='2000' AND DATE(stt.ngayTao) = CURDATE();\" },\n                type: 'POST',\n                success: function (data) {\n                    if (data !== 2000) {\n                        //console.log(\"btn1 enabled\");\n                        console.log(data);\n                        $(\"#print2\").text(\"\");\n                        $(\"#btn2\").removeAttr('disabled');\n\n                    }\n                }\n            });\n        });\n\n        //button btn3 click - quay so 3\n        $(\"#btn3\").click(() => {\n            $(\"#btn3\").attr(\"disabled\", true);\n            //console.log(\"btn1 disabled\");\n            $(\"#print3\").text(\"Đang in phiếu...\");\n            $.ajax({\n                url: apilayso3,\n                data: { \"maquay\": \"quayso3\", \"topic\": \"SELECT MAX(stt.maSoTT) AS maxSTT FROM sothutu stt WHERE stt.maPhong='3000' AND DATE(stt.ngayTao) = CURDATE();\" },\n                type: 'POST',\n                success: function (data) {\n                    if (data !== 3000) {\n                        //console.log(\"btn1 enabled\");\n                        console.log(data);\n                        $(\"#print3\").text(\"\");\n                        $(\"#btn3\").removeAttr('disabled');\n                    }\n                }\n            });\n        });\n        \n        //button btn4 click - quay so 4\n        $(\"#btn4\").click(() => {\n            $(\"#btn4\").attr(\"disabled\", true);\n            //console.log(\"btn1 disabled\");\n            $(\"#print4\").text(\"Đang in phiếu...\");\n            $.ajax({\n                url: apilayso4,\n                data: { \"maquay\": \"quayso4\", \"topic\": \"SELECT MAX(stt.maSoTT) AS maxSTT FROM sothutu stt WHERE stt.maPhong='4000' AND DATE(stt.ngayTao) = CURDATE();\" },\n                type: 'POST',\n                success: function (data) {\n                    if (data !== 4000) {\n                        //console.log(\"btn1 enabled\");\n                        console.log(data);\n                        $(\"#print4\").text(\"\");\n                        $(\"#btn4\").removeAttr('disabled');\n                    }\n                }\n            });\n        });\n\n    });\n\n\n\n</script>\n\n</html>",
+    "output": "str",
+    "x": 330,
+    "y": 40,
+    "wires": [
+        ["572fed82.d0a9c4"]
+    ]
+}, {
+    "id": "39f0896.6505a76",
+    "type": "function",
+    "z": "8f47c528.a3b0f8",
+    "name": "Set maxSTT from DB.sothutu to Flow",
+    "func": "//let count1 = flow.get('count1');\n//msg.payload = count1;\nlet count1 = msg.payload;\nmsg.topic = \"INSERT INTO sothutu (maSoTT, maPhong, maQuay) VALUES (\"+count1+\", '1000', 'quayso1');\";\nmsg.payload = count1;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1030,
+    "y": 120,
+    "wires": [
+        ["c7d1dbbf.bef158"]
+    ]
+}, {
+    "id": "ccae7081.21483",
+    "type": "function",
+    "z": "8f47c528.a3b0f8",
+    "name": "flow.set count1",
+    "func": "let count1=msg.payload[0].maxSTT;\nflow.set('count1',count1);\nif(count1 === null){\n    count1 = 1000;\n    count1++;\n    flow.set('count1',count1);\n} else {\n    count1 = flow.get('count1');\n    count1++;\n    flow.set('count1',count1);\n}\n\nmsg.payload = count1;\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 660,
+    "y": 120,
+    "wires": [
+        ["cfb48224.3c404"]
+    ]
+}, {
+    "id": "5bee572a.62a2c8",
+    "type": "mysql",
+    "z": "8f47c528.a3b0f8",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 460,
+    "y": 240,
+    "wires": [
+        ["fa8e52db.a1ef3"]
+    ]
+}, {
+    "id": "fa8e52db.a1ef3",
+    "type": "function",
+    "z": "8f47c528.a3b0f8",
+    "name": "flow.set count2",
+    "func": "let count2=msg.payload[0].maxSTT;\n flow.set('count2',count2);\nif(count2 === null){\n    count2 = 2000;\n    count2++;\n    flow.set('count2',count2);\n} else {\n    count2 = flow.get('count2');\n    count2++;\n    flow.set('count2',count2);\n}\n\nmsg.payload = count2;\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 660,
+    "y": 240,
+    "wires": [
+        ["a32c227a.d6706"]
+    ]
+}, {
+    "id": "8e3a365f.268c08",
+    "type": "function",
+    "z": "8f47c528.a3b0f8",
+    "name": "Set maxSTT from DB.sothutu to Flow",
+    "func": "//let count1 = flow.get('count1');\n//msg.payload = count1;\nlet count2 = msg.payload;\nmsg.topic = \"INSERT INTO sothutu (maSoTT, maPhong, maQuay) VALUES (\"+count2+\", '2000', 'quayso2');\";\nmsg.payload = count2;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1030,
+    "y": 240,
+    "wires": [
+        ["c7d1dbbf.bef158"]
+    ]
+}, {
+    "id": "d3c7af4.030b95",
+    "type": "mysql",
+    "z": "8f47c528.a3b0f8",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 460,
+    "y": 360,
+    "wires": [
+        ["91a24e25.b6e3c"]
+    ]
+}, {
+    "id": "91a24e25.b6e3c",
+    "type": "function",
+    "z": "8f47c528.a3b0f8",
+    "name": "flow.set count3",
+    "func": "let count3=msg.payload[0].maxSTT;\nflow.set('count3',count3);\nif(count3 === null){\n    count3 = 3000;\n    count3++;\n    flow.set('count3',count3);\n} else {\n    count3 = flow.get('count3');\n    count3++;\n    flow.set('count3',count3);\n}\n\nmsg.payload = count3;\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 660,
+    "y": 360,
+    "wires": [
+        ["6cffb1f6.347c4"]
+    ]
+}, {
+    "id": "2727b3e.d59084c",
+    "type": "function",
+    "z": "8f47c528.a3b0f8",
+    "name": "Set maxSTT from DB.sothutu to Flow",
+    "func": "//let count1 = flow.get('count1');\n//msg.payload = count1;\nlet count3 = msg.payload;\nmsg.topic = \"INSERT INTO sothutu (maSoTT, maPhong, maQuay) VALUES (\"+count3+\", '3000', 'quayso3');\";\nmsg.payload = count3;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1030,
+    "y": 360,
+    "wires": [
+        ["c7d1dbbf.bef158"]
+    ]
+}, {
+    "id": "1a60cd14.4702f3",
+    "type": "mysql",
+    "z": "8f47c528.a3b0f8",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 450,
+    "y": 120,
+    "wires": [
+        ["ccae7081.21483"]
+    ]
+}, {
+    "id": "c7d1dbbf.bef158",
+    "type": "mysql",
+    "z": "8f47c528.a3b0f8",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 1320,
+    "y": 300,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "cfb48224.3c404",
+    "type": "function",
+    "z": "8f47c528.a3b0f8",
+    "name": "Printer",
+    "func": "//let count = msg.payload;\nlet maQuay = \"QUẦY SỐ 1\";\nlet moment = global.get(\"moment\");\nlet puppeteer = global.get('puppeteer');\nlet ptp = global.get(\"pdftoprinter\");\n//let count1 = flow.get('count1');\nlet count1 = msg.payload;\n\nlet html = '<div style=\"text-align: center; border-style: solid; border-color: black;\">' +\n    '<div style=\"font-size: 15; font-weight: bold; \">UBND HUYỆN ĐỨC LINH</div>' +\n    '<div style=\"font-size: 25; font-weight: bold;\">SỐ PHIẾU</div>' +\n    '<div style=\"font-size: 100; font-weight: bold;\">'+count1+'</div>' +\n    '<div style=\"font-size: 25; font-weight: bold;\">'+maQuay+'</div>' +\n    '<div style=\"font-size: 20; font-style: italic; font-weight: bold; margin-top: 10px;\">Ngày '+moment().format(\"DD/MM/YYYY h:mm:ss a\")+'</div>' +\n    '</div>';\n\nasync function convertToPDF() {\n    const browser = await puppeteer.launch();\n    const page = await browser.newPage();\n    await page.setContent(html);\n    let height = await page.evaluate(() => document.documentElement.offsetHeight);\n    let width = await page.evaluate(() => document.documentElement.offsetWidth);\n    await page.pdf({\n        path: 'page.pdf',\n        displayHeaderFooter: false,\n        printBackground: true,\n        pageRanges: '1',\n        width: 297 + 'mm',\n        height: 72.1 + 'mm',\n        landscape: true,\n        scale: 1,\n        margin: \"none\"\n    });\n    await browser.close();\n}\n\nconvertToPDF().then(() => {\n    ptp\n        .print(\"page.pdf\")\n        .then(node.send({payload: count1}))\n        .catch(console.error);\n})\n\n//return msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "x": 810,
+    "y": 120,
+    "wires": [
+        ["39f0896.6505a76", "3712fff.3df6c"]
+    ]
+}, {
+    "id": "e916e97.df17618",
+    "type": "http in",
+    "z": "8f47c528.a3b0f8",
+    "name": "",
+    "url": "/ubnd_duclinh_apilayso1",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 150,
+    "y": 80,
+    "wires": [
+        ["ea6d15d9.438f28"]
+    ]
+}, {
+    "id": "bbd5a245.b23f7",
+    "type": "http response",
+    "z": "8f47c528.a3b0f8",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 1110,
+    "y": 80,
+    "wires": []
+}, {
+    "id": "281aeb3b.94dfd4",
+    "type": "http in",
+    "z": "8f47c528.a3b0f8",
+    "name": "",
+    "url": "/ubnd_duclinh_apilayso2",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 150,
+    "y": 200,
+    "wires": [
+        ["9d618ce9.5e22f"]
+    ]
+}, {
+    "id": "d737ce8a.1a646",
+    "type": "http response",
+    "z": "8f47c528.a3b0f8",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 1110,
+    "y": 200,
+    "wires": []
+}, {
+    "id": "a50554b4.ab17e8",
+    "type": "http in",
+    "z": "8f47c528.a3b0f8",
+    "name": "",
+    "url": "/ubnd_duclinh_apilayso3",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 150,
+    "y": 320,
+    "wires": [
+        ["bfcfc4b0.b447d8"]
+    ]
+}, {
+    "id": "56694a49.616934",
+    "type": "http response",
+    "z": "8f47c528.a3b0f8",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 1130,
+    "y": 320,
+    "wires": []
+}, {
+    "id": "e13bfe24.cdf6f",
+    "type": "function",
+    "z": "8f47c528.a3b0f8",
+    "name": "parse query",
+    "func": "msg.topic = msg.payload.topic;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 290,
+    "y": 120,
+    "wires": [
+        ["1a60cd14.4702f3"]
+    ]
+}, {
+    "id": "10c71f50.1b1a41",
+    "type": "function",
+    "z": "8f47c528.a3b0f8",
+    "name": "parse query",
+    "func": "msg.topic = msg.payload.topic;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 290,
+    "y": 240,
+    "wires": [
+        ["5bee572a.62a2c8"]
+    ]
+}, {
+    "id": "163cf7d0.6a9fb8",
+    "type": "function",
+    "z": "8f47c528.a3b0f8",
+    "name": "parse query",
+    "func": "msg.topic = msg.payload.topic;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 290,
+    "y": 360,
+    "wires": [
+        ["d3c7af4.030b95"]
+    ]
+}, {
+    "id": "ea6d15d9.438f28",
+    "type": "change",
+    "z": "8f47c528.a3b0f8",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 110,
+    "y": 120,
+    "wires": [
+        ["e13bfe24.cdf6f"]
+    ]
+}, {
+    "id": "3712fff.3df6c",
+    "type": "change",
+    "z": "8f47c528.a3b0f8",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 950,
+    "y": 80,
+    "wires": [
+        ["bbd5a245.b23f7"]
+    ]
+}, {
+    "id": "9d618ce9.5e22f",
+    "type": "change",
+    "z": "8f47c528.a3b0f8",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 110,
+    "y": 240,
+    "wires": [
+        ["10c71f50.1b1a41"]
+    ]
+}, {
+    "id": "a32c227a.d6706",
+    "type": "function",
+    "z": "8f47c528.a3b0f8",
+    "name": "Printer",
+    "func": "//let count = msg.payload;\nlet maQuay = \"QUẦY SỐ 2\";\nlet moment = global.get(\"moment\");\nlet puppeteer = global.get('puppeteer');\nlet ptp = global.get(\"pdftoprinter\");\n//let count1 = flow.get('count1');\nlet count2 = msg.payload;\n\nlet html = '<div style=\"text-align: center; border-style: solid; border-color: black;\">' +\n    '<div style=\"font-size: 15; font-weight: bold; \">UBND HUYỆN ĐỨC LINH</div>' +\n    '<div style=\"font-size: 25; font-weight: bold;\">SỐ PHIẾU</div>' +\n    '<div style=\"font-size: 100; font-weight: bold;\">'+count2+'</div>' +\n    '<div style=\"font-size: 25; font-weight: bold;\">'+maQuay+'</div>' +\n    '<div style=\"font-size: 20; font-style: italic; font-weight: bold; margin-top: 10px;\">Ngày '+moment().format(\"DD/MM/YYYY h:mm:ss a\")+'</div>' +\n    '</div>';\n\nasync function convertToPDF() {\n    const browser = await puppeteer.launch();\n    const page = await browser.newPage();\n    await page.setContent(html);\n    let height = await page.evaluate(() => document.documentElement.offsetHeight);\n    let width = await page.evaluate(() => document.documentElement.offsetWidth);\n    await page.pdf({\n        path: 'page.pdf',\n        displayHeaderFooter: false,\n        printBackground: true,\n        pageRanges: '1',\n        width: 297 + 'mm',\n        height: 72.1 + 'mm',\n        landscape: true,\n        scale: 1,\n        margin: \"none\"\n    });\n    await browser.close();\n}\n\nconvertToPDF().then(() => {\n    ptp\n        .print(\"page.pdf\")\n        .then(node.send({payload: count2}))\n        .catch(console.error);\n})\n\n//return msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "x": 810,
+    "y": 240,
+    "wires": [
+        ["8e3a365f.268c08", "44d99ef5.e3853"]
+    ]
+}, {
+    "id": "44d99ef5.e3853",
+    "type": "change",
+    "z": "8f47c528.a3b0f8",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 950,
+    "y": 200,
+    "wires": [
+        ["d737ce8a.1a646"]
+    ]
+}, {
+    "id": "bfcfc4b0.b447d8",
+    "type": "change",
+    "z": "8f47c528.a3b0f8",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 110,
+    "y": 360,
+    "wires": [
+        ["163cf7d0.6a9fb8"]
+    ]
+}, {
+    "id": "29e083a6.c367fc",
+    "type": "change",
+    "z": "8f47c528.a3b0f8",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 950,
+    "y": 320,
+    "wires": [
+        ["56694a49.616934"]
+    ]
+}, {
+    "id": "6cffb1f6.347c4",
+    "type": "function",
+    "z": "8f47c528.a3b0f8",
+    "name": "Printer",
+    "func": "//let count = msg.payload;\nlet maQuay = \"QUẦY SỐ 3\";\nlet moment = global.get(\"moment\");\nlet puppeteer = global.get('puppeteer');\nlet ptp = global.get(\"pdftoprinter\");\n//let count1 = flow.get('count1');\nlet count3 = msg.payload;\n\nlet html = '<div style=\"text-align: center; border-style: solid; border-color: black;\">' +\n    '<div style=\"font-size: 15; font-weight: bold; \">UBND HUYỆN ĐỨC LINH</div>' +\n    '<div style=\"font-size: 25; font-weight: bold;\">SỐ PHIẾU</div>' +\n    '<div style=\"font-size: 100; font-weight: bold;\">'+count3+'</div>' +\n    '<div style=\"font-size: 25; font-weight: bold;\">'+maQuay+'</div>' +\n    '<div style=\"font-size: 20; font-style: italic; font-weight: bold; margin-top: 10px;\">Ngày '+moment().format(\"DD/MM/YYYY h:mm:ss a\")+'</div>' +\n    '</div>';\n\nasync function convertToPDF() {\n    const browser = await puppeteer.launch();\n    const page = await browser.newPage();\n    await page.setContent(html);\n    let height = await page.evaluate(() => document.documentElement.offsetHeight);\n    let width = await page.evaluate(() => document.documentElement.offsetWidth);\n    await page.pdf({\n        path: 'page.pdf',\n        displayHeaderFooter: false,\n        printBackground: true,\n        pageRanges: '1',\n        width: 297 + 'mm',\n        height: 72.1 + 'mm',\n        landscape: true,\n        scale: 1,\n        margin: \"none\"\n    });\n    await browser.close();\n}\n\nconvertToPDF().then(() => {\n    ptp\n        .print(\"page.pdf\")\n        .then(node.send({payload: count3}))\n        .catch(console.error);\n})\n\n//return msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "x": 810,
+    "y": 360,
+    "wires": [
+        ["2727b3e.d59084c", "29e083a6.c367fc"]
+    ]
+}, {
+    "id": "b7b68cea.f4416",
+    "type": "mysql",
+    "z": "8f47c528.a3b0f8",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 460,
+    "y": 480,
+    "wires": [
+        ["97bdbb38.39c418"]
+    ]
+}, {
+    "id": "97bdbb38.39c418",
+    "type": "function",
+    "z": "8f47c528.a3b0f8",
+    "name": "flow.set count4",
+    "func": "let count4=msg.payload[0].maxSTT;\nflow.set('count4',count4);\nif(count4 === null){\n    count4 = 4000;\n    count4++;\n    flow.set('count4',count4);\n} else {\n    count4 = flow.get('count4');\n    count4++;\n    flow.set('count4',count4);\n}\n\nmsg.payload = count4;\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 660,
+    "y": 480,
+    "wires": [
+        ["cccf5a74.c5b688"]
+    ]
+}, {
+    "id": "458254cb.cd640c",
+    "type": "function",
+    "z": "8f47c528.a3b0f8",
+    "name": "Set maxSTT from DB.sothutu to Flow",
+    "func": "//let count1 = flow.get('count1');\n//msg.payload = count1;\nlet count4 = msg.payload;\nmsg.topic = \"INSERT INTO sothutu (maSoTT, maPhong, maQuay) VALUES (\"+count4+\", '4000', 'quayso4');\";\nmsg.payload = count4;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1030,
+    "y": 480,
+    "wires": [
+        ["c7d1dbbf.bef158"]
+    ]
+}, {
+    "id": "472e432a.dc5d6c",
+    "type": "http in",
+    "z": "8f47c528.a3b0f8",
+    "name": "",
+    "url": "/ubnd_duclinh_apilayso4",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 150,
+    "y": 440,
+    "wires": [
+        ["d98c9756.bfbb28"]
+    ]
+}, {
+    "id": "ca688191.bec5e",
+    "type": "http response",
+    "z": "8f47c528.a3b0f8",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 1130,
+    "y": 440,
+    "wires": []
+}, {
+    "id": "b8a88c6c.2367f",
+    "type": "function",
+    "z": "8f47c528.a3b0f8",
+    "name": "parse query",
+    "func": "msg.topic = msg.payload.topic;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "x": 290,
+    "y": 480,
+    "wires": [
+        ["b7b68cea.f4416"]
+    ]
+}, {
+    "id": "d98c9756.bfbb28",
+    "type": "change",
+    "z": "8f47c528.a3b0f8",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 110,
+    "y": 480,
+    "wires": [
+        ["b8a88c6c.2367f"]
+    ]
+}, {
+    "id": "2f0af49d.2eb30c",
+    "type": "change",
+    "z": "8f47c528.a3b0f8",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 950,
+    "y": 440,
+    "wires": [
+        ["ca688191.bec5e"]
+    ]
+}, {
+    "id": "cccf5a74.c5b688",
+    "type": "function",
+    "z": "8f47c528.a3b0f8",
+    "name": "Printer",
+    "func": "//let count = msg.payload;\nlet maQuay = \"QUẦY SỐ 4\";\nlet moment = global.get(\"moment\");\nlet puppeteer = global.get('puppeteer');\nlet ptp = global.get(\"pdftoprinter\");\n//let count1 = flow.get('count1');\nlet count4 = msg.payload;\n\nlet html = '<div style=\"text-align: center; border-style: solid; border-color: black;\">' +\n    '<div style=\"font-size: 15; font-weight: bold; \">UBND HUYỆN ĐỨC LINH</div>' +\n    '<div style=\"font-size: 25; font-weight: bold;\">SỐ PHIẾU</div>' +\n    '<div style=\"font-size: 100; font-weight: bold;\">'+count4+'</div>' +\n    '<div style=\"font-size: 25; font-weight: bold;\">'+maQuay+'</div>' +\n    '<div style=\"font-size: 20; font-style: italic; font-weight: bold; margin-top: 10px;\">Ngày '+moment().format(\"DD/MM/YYYY h:mm:ss a\")+'</div>' +\n    '</div>';\n\nasync function convertToPDF() {\n    const browser = await puppeteer.launch();\n    const page = await browser.newPage();\n    await page.setContent(html);\n    let height = await page.evaluate(() => document.documentElement.offsetHeight);\n    let width = await page.evaluate(() => document.documentElement.offsetWidth);\n    await page.pdf({\n        path: 'page.pdf',\n        displayHeaderFooter: false,\n        printBackground: true,\n        pageRanges: '1',\n        width: 297 + 'mm',\n        height: 72.1 + 'mm',\n        landscape: true,\n        scale: 1,\n        margin: \"none\"\n    });\n    await browser.close();\n}\n\nconvertToPDF().then(() => {\n    ptp\n        .print(\"page.pdf\")\n        .then(node.send({payload: count4}))\n        .catch(console.error);\n})\n\n//return msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "x": 810,
+    "y": 480,
+    "wires": [
+        ["458254cb.cd640c", "2f0af49d.2eb30c"]
+    ]
+}, {
+    "id": "9b323966.50edb8",
+    "type": "http in",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "url": "/ubnd_duclinh_apinextnumber1",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 190,
+    "y": 80,
+    "wires": [
+        ["251637cb.ef0018", "a94d9525.d91208"]
+    ]
+}, {
+    "id": "b0113000.a2ce",
+    "type": "http response",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 1030,
+    "y": 120,
+    "wires": []
+}, {
+    "id": "708d6cb7.ec5364",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Respone maSTT",
+    "func": "\nif(msg.payload[0].maSoTT === null){\n    msg.payload = \"Hết số\";\n} else {\n    msg.payload = msg.payload[0].maSoTT;\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 650,
+    "y": 120,
+    "wires": [
+        ["4363a22e.ae437c", "802595d7.9c83d8", "2c7863f6.72dd8c"]
+    ]
+}, {
+    "id": "251637cb.ef0018",
+    "type": "debug",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 110,
+    "y": 40,
+    "wires": []
+}, {
+    "id": "4363a22e.ae437c",
+    "type": "debug",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 730,
+    "y": 80,
+    "wires": []
+}, {
+    "id": "e2abf909.da1388",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Query MIN(stt.maSoTT)",
+    "func": "msg.topic = \"SELECT MIN(stt.maSoTT) AS maSoTT FROM sothutu stt WHERE stt.flagCalled=0 AND stt.maPhong='1000' AND DATE(stt.ngayTao) = CURDATE();\"\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 150,
+    "y": 160,
+    "wires": [
+        ["f96ac6b1.4c2fc8"]
+    ]
+}, {
+    "id": "f96ac6b1.4c2fc8",
+    "type": "mysql",
+    "z": "af96c0fb.ac388",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 390,
+    "y": 160,
+    "wires": [
+        ["c2e661b2.8bc14", "708d6cb7.ec5364", "998ceb15.3ab3d8", "898688f2.4b06c8"]
+    ]
+}, {
+    "id": "c2e661b2.8bc14",
+    "type": "debug",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload[0].maSoTT",
+    "targetType": "msg",
+    "x": 470,
+    "y": 80,
+    "wires": []
+}, {
+    "id": "a94d9525.d91208",
+    "type": "change",
+    "z": "af96c0fb.ac388",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 130,
+    "y": 120,
+    "wires": [
+        ["e2abf909.da1388"]
+    ]
+}, {
+    "id": "802595d7.9c83d8",
+    "type": "change",
+    "z": "af96c0fb.ac388",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 870,
+    "y": 120,
+    "wires": [
+        ["b0113000.a2ce"]
+    ]
+}, {
+    "id": "23640414.f4bcdc",
+    "type": "http response",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 910,
+    "y": 500,
+    "wires": []
+}, {
+    "id": "d6da1eeb.60e2e",
+    "type": "change",
+    "z": "af96c0fb.ac388",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 690,
+    "y": 500,
+    "wires": [
+        ["23640414.f4bcdc"]
+    ]
+}, {
+    "id": "ddbc6850.265418",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Response",
+    "func": "msg.payload = \"Đang gọi\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 400,
+    "y": 480,
+    "wires": [
+        ["d6da1eeb.60e2e"]
+    ]
+}, {
+    "id": "9fa22729.e905f8",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Response",
+    "func": "msg.payload = \"Hết số\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 400,
+    "y": 520,
+    "wires": [
+        ["d6da1eeb.60e2e"]
+    ]
+}, {
+    "id": "1bec22b4.c8ad9d",
+    "type": "google-tts",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "inputField": "payload",
+    "inputFieldType": "msg",
+    "outputField": "payload",
+    "outputFieldType": "msg",
+    "languageField": "vi",
+    "languageFieldType": "str",
+    "speedField": "2",
+    "speedFieldType": "num",
+    "x": 720,
+    "y": 420,
+    "wires": [
+        ["ddbc6850.265418", "7046fff7.da6f6"]
+    ]
+}, {
+    "id": "7e1bf5f5.2d489c",
+    "type": "switch",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "property": "payload.soDangGoi",
+    "propertyType": "msg",
+    "rules": [{
+        "t": "neq",
+        "v": "Hết số",
+        "vt": "str"
+    }, {
+        "t": "eq",
+        "v": "Hết số",
+        "vt": "str"
+    }],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 290,
+    "y": 340,
+    "wires": [
+        ["da8e8d7f.18432", "8ccb5c51.3021e", "8bb30802.e93358"],
+        ["9fa22729.e905f8"]
+    ]
+}, {
+    "id": "da8e8d7f.18432",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Parse string call number",
+    "func": "let soDangGoi = msg.payload.soDangGoi;\nlet len = soDangGoi.length;\nsoDangGoi = soDangGoi.split(\"\").join(\" \");\nmsg.payload = \"Xin mời số \"+soDangGoi+\" vào quầy số 1\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 450,
+    "y": 420,
+    "wires": [
+        ["1bec22b4.c8ad9d"]
+    ]
+}, {
+    "id": "8ccb5c51.3021e",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Update stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=1",
+    "func": "\nlet soDangGoi = msg.payload.soDangGoi;\nlet soDaGoi = soDangGoi-1;\nmsg.topic = \"UPDATE sothutu stt SET stt.flagNext=1, stt.flagCall=1, stt.flagCalled=1, stt.flagWaiting=0, stt.flagCalled=1 WHERE stt.maSoTT=\"+soDaGoi+\" AND DATE(stt.ngayTao) = CURDATE();\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 580,
+    "y": 260,
+    "wires": [
+        ["6dac1351.48a78c"]
+    ]
+}, {
+    "id": "493c043f.aac01c",
+    "type": "change",
+    "z": "af96c0fb.ac388",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 130,
+    "y": 340,
+    "wires": [
+        ["7e1bf5f5.2d489c"]
+    ]
+}, {
+    "id": "6dac1351.48a78c",
+    "type": "mysql",
+    "z": "af96c0fb.ac388",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 930,
+    "y": 300,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "c9a75fda.a50e6",
+    "type": "http in",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "url": "/ubnd_duclinh_apicallnumber1",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 180,
+    "y": 280,
+    "wires": [
+        ["38cbe93a.492316", "493c043f.aac01c"]
+    ]
+}, {
+    "id": "38cbe93a.492316",
+    "type": "debug",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 110,
+    "y": 240,
+    "wires": []
+}, {
+    "id": "898688f2.4b06c8",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Update stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=0",
+    "func": "\nif(msg.payload[0].maSoTT !== null){\n    let soDangGoi = msg.payload[0].maSoTT;\n    let soDaGoi = soDangGoi-1;\n    msg.topic = \"UPDATE sothutu stt SET stt.flagNext=1, stt.flagCall=1, flagWaiting=0 WHERE stt.maSoTT=\"+soDaGoi+\" AND DATE(stt.ngayTao) = CURDATE();\";\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 740,
+    "y": 200,
+    "wires": [
+        ["9a604a56.c085e8"]
+    ]
+}, {
+    "id": "9a604a56.c085e8",
+    "type": "mysql",
+    "z": "af96c0fb.ac388",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 1050,
+    "y": 200,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "998ceb15.3ab3d8",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Update stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=1",
+    "func": "\n\n\nif(msg.payload[0].maSoTT !== null){\n    msg.topic = \"UPDATE sothutu stt SET stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=1 WHERE stt.maSoTT=\"+msg.payload[0].maSoTT+\" AND DATE(stt.ngayTao) = CURDATE();\";\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 740,
+    "y": 160,
+    "wires": [
+        ["126f0a23.f4e656"]
+    ]
+}, {
+    "id": "126f0a23.f4e656",
+    "type": "mysql",
+    "z": "af96c0fb.ac388",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 1050,
+    "y": 160,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "7046fff7.da6f6",
+    "type": "audio",
+    "z": "af96c0fb.ac388",
+    "x": 930,
+    "y": 420,
+    "wires": []
+}, {
+    "id": "a6f15d8a.0a414",
+    "type": "audio",
+    "z": "af96c0fb.ac388",
+    "source": "C:\\\\Users\\\\Admin\\\\.node-red\\\\sound\\\\dingdong.mp3",
+    "name": "dingdong.mp3",
+    "x": 1140,
+    "y": 80,
+    "wires": []
+}, {
+    "id": "2c7863f6.72dd8c",
+    "type": "switch",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [{
+        "t": "neq",
+        "v": "Hết số",
+        "vt": "str"
+    }],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 1,
+    "x": 920,
+    "y": 80,
+    "wires": [
+        ["a6f15d8a.0a414", "d5d3b32d.c7d8e"]
+    ]
+}, {
+    "id": "8bb30802.e93358",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Update stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=1",
+    "func": "\nlet soDangGoi = msg.payload.soDangGoi;\nmsg.topic = \"UPDATE sothutu stt SET stt.flagNext=1, stt.flagCall=1, stt.flagCalled=1, stt.flagCalled=1 WHERE stt.maSoTT=\"+soDangGoi+\" AND DATE(stt.ngayTao) = CURDATE();\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 580,
+    "y": 320,
+    "wires": [
+        ["6dac1351.48a78c"]
+    ]
+}, {
+    "id": "c8ae4cdf.023b8",
+    "type": "http request",
+    "z": "af96c0fb.ac388",
+    "name": "101",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://192.168.1.101",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "authType": "",
+    "x": 1290,
+    "y": 40,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "d5d3b32d.c7d8e",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Display to led",
+    "func": "let message = msg.payload;\n\nmsg.headers = {\n     'content-type':'multipart/form-data'\n}\nmsg.payload = {\n    message: message\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1120,
+    "y": 40,
+    "wires": [
+        ["c8ae4cdf.023b8"]
+    ]
+}, {
+    "id": "6bb6d0e8.98e7f",
+    "type": "http in",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "url": "/ubnd_duclinh_apinextnumber2",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 190,
+    "y": 620,
+    "wires": [
+        ["18ee3233.bad95e", "72bdf64e.79eea8"]
+    ]
+}, {
+    "id": "62fd47f6.221858",
+    "type": "http response",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 1030,
+    "y": 660,
+    "wires": []
+}, {
+    "id": "637a96d4.fe9048",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Respone maSTT",
+    "func": "\nif(msg.payload[0].maSoTT === null){\n    msg.payload = \"Hết số\";\n} else {\n    msg.payload = msg.payload[0].maSoTT;\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 650,
+    "y": 660,
+    "wires": [
+        ["cb4bb361.f308e", "7a6f6f8b.8dbde", "9229cd8c.718e6"]
+    ]
+}, {
+    "id": "18ee3233.bad95e",
+    "type": "debug",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 110,
+    "y": 580,
+    "wires": []
+}, {
+    "id": "cb4bb361.f308e",
+    "type": "debug",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 730,
+    "y": 620,
+    "wires": []
+}, {
+    "id": "14c27b8f.ba63f4",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Query MIN(stt.maSoTT)",
+    "func": "msg.topic = \"SELECT MIN(stt.maSoTT) AS maSoTT FROM sothutu stt WHERE stt.flagCalled=0 AND stt.maPhong='2000' AND DATE(stt.ngayTao) = CURDATE();\"\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 150,
+    "y": 700,
+    "wires": [
+        ["991d5a8d.90dde8"]
+    ]
+}, {
+    "id": "991d5a8d.90dde8",
+    "type": "mysql",
+    "z": "af96c0fb.ac388",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 390,
+    "y": 700,
+    "wires": [
+        ["cd56d081.4617c", "637a96d4.fe9048", "6f7a0c76.848b34", "37d4ba74.76a1c6"]
+    ]
+}, {
+    "id": "cd56d081.4617c",
+    "type": "debug",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload[0].maSoTT",
+    "targetType": "msg",
+    "x": 470,
+    "y": 620,
+    "wires": []
+}, {
+    "id": "72bdf64e.79eea8",
+    "type": "change",
+    "z": "af96c0fb.ac388",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 130,
+    "y": 660,
+    "wires": [
+        ["14c27b8f.ba63f4"]
+    ]
+}, {
+    "id": "7a6f6f8b.8dbde",
+    "type": "change",
+    "z": "af96c0fb.ac388",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 870,
+    "y": 660,
+    "wires": [
+        ["62fd47f6.221858"]
+    ]
+}, {
+    "id": "72115cf6.157124",
+    "type": "http response",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 910,
+    "y": 1040,
+    "wires": []
+}, {
+    "id": "3e8d9c6e.a8c8c4",
+    "type": "change",
+    "z": "af96c0fb.ac388",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 690,
+    "y": 1040,
+    "wires": [
+        ["72115cf6.157124"]
+    ]
+}, {
+    "id": "eaa1894c.903d98",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Response",
+    "func": "msg.payload = \"Đang gọi\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 400,
+    "y": 1020,
+    "wires": [
+        ["3e8d9c6e.a8c8c4"]
+    ]
+}, {
+    "id": "35bdc9c3.edafc6",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Response",
+    "func": "msg.payload = \"Hết số\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 400,
+    "y": 1060,
+    "wires": [
+        ["3e8d9c6e.a8c8c4"]
+    ]
+}, {
+    "id": "ece7cc68.0adf",
+    "type": "google-tts",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "inputField": "payload",
+    "inputFieldType": "msg",
+    "outputField": "payload",
+    "outputFieldType": "msg",
+    "languageField": "vi",
+    "languageFieldType": "str",
+    "speedField": "2",
+    "speedFieldType": "num",
+    "x": 720,
+    "y": 960,
+    "wires": [
+        ["eaa1894c.903d98", "ef70400e.67b28"]
+    ]
+}, {
+    "id": "f8e09ae.9933268",
+    "type": "switch",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "property": "payload.soDangGoi",
+    "propertyType": "msg",
+    "rules": [{
+        "t": "neq",
+        "v": "Hết số",
+        "vt": "str"
+    }, {
+        "t": "eq",
+        "v": "Hết số",
+        "vt": "str"
+    }],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 290,
+    "y": 880,
+    "wires": [
+        ["1184e9e6.c93646", "8b9f1d2b.a045a", "3b170c25.924614"],
+        ["35bdc9c3.edafc6"]
+    ]
+}, {
+    "id": "1184e9e6.c93646",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Parse string call number",
+    "func": "let soDangGoi = msg.payload.soDangGoi;\nlet len = soDangGoi.length;\nsoDangGoi = soDangGoi.split(\"\").join(\" \");\nmsg.payload = \"Xin mời số \"+soDangGoi+\" vào quầy số 2\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 450,
+    "y": 960,
+    "wires": [
+        ["ece7cc68.0adf"]
+    ]
+}, {
+    "id": "8b9f1d2b.a045a",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Update stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=1",
+    "func": "\nlet soDangGoi = msg.payload.soDangGoi;\nlet soDaGoi = soDangGoi-1;\nmsg.topic = \"UPDATE sothutu stt SET stt.flagNext=1, stt.flagCall=1, stt.flagCalled=1, stt.flagWaiting=0, stt.flagCalled=1 WHERE stt.maSoTT=\"+soDaGoi+\" AND DATE(stt.ngayTao) = CURDATE();\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 580,
+    "y": 800,
+    "wires": [
+        ["e9cc7e3c.6d5de"]
+    ]
+}, {
+    "id": "7c788dcd.49efc4",
+    "type": "change",
+    "z": "af96c0fb.ac388",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 130,
+    "y": 880,
+    "wires": [
+        ["f8e09ae.9933268"]
+    ]
+}, {
+    "id": "e9cc7e3c.6d5de",
+    "type": "mysql",
+    "z": "af96c0fb.ac388",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 930,
+    "y": 840,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "64da93e3.777b4c",
+    "type": "http in",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "url": "/ubnd_duclinh_apicallnumber2",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 180,
+    "y": 820,
+    "wires": [
+        ["6ad915d0.34a3ec", "7c788dcd.49efc4"]
+    ]
+}, {
+    "id": "6ad915d0.34a3ec",
+    "type": "debug",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 110,
+    "y": 780,
+    "wires": []
+}, {
+    "id": "37d4ba74.76a1c6",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Update stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=0",
+    "func": "\nif(msg.payload[0].maSoTT !== null){\n    let soDangGoi = msg.payload[0].maSoTT;\n    let soDaGoi = soDangGoi-1;\n    msg.topic = \"UPDATE sothutu stt SET stt.flagNext=1, stt.flagCall=1, flagWaiting=0 WHERE stt.maSoTT=\"+soDaGoi+\" AND DATE(stt.ngayTao) = CURDATE();\";\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 740,
+    "y": 740,
+    "wires": [
+        ["62549e7f.4fe9f"]
+    ]
+}, {
+    "id": "62549e7f.4fe9f",
+    "type": "mysql",
+    "z": "af96c0fb.ac388",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 1050,
+    "y": 740,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "6f7a0c76.848b34",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Update stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=1",
+    "func": "\n\n\nif(msg.payload[0].maSoTT !== null){\n    msg.topic = \"UPDATE sothutu stt SET stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=1 WHERE stt.maSoTT=\"+msg.payload[0].maSoTT+\" AND DATE(stt.ngayTao) = CURDATE();\";\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 740,
+    "y": 700,
+    "wires": [
+        ["8721a914.975978"]
+    ]
+}, {
+    "id": "8721a914.975978",
+    "type": "mysql",
+    "z": "af96c0fb.ac388",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 1050,
+    "y": 700,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "ef70400e.67b28",
+    "type": "audio",
+    "z": "af96c0fb.ac388",
+    "x": 930,
+    "y": 960,
+    "wires": []
+}, {
+    "id": "bb587ba6.57f4d8",
+    "type": "audio",
+    "z": "af96c0fb.ac388",
+    "source": "C:\\\\Users\\\\Admin\\\\.node-red\\\\sound\\\\dingdong.mp3",
+    "name": "dingdong.mp3",
+    "x": 1140,
+    "y": 620,
+    "wires": []
+}, {
+    "id": "9229cd8c.718e6",
+    "type": "switch",
+    "z": "af96c0fb.ac388",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [{
+        "t": "neq",
+        "v": "Hết số",
+        "vt": "str"
+    }],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 1,
+    "x": 920,
+    "y": 620,
+    "wires": [
+        ["bb587ba6.57f4d8", "f987a0b6.fc63b"]
+    ]
+}, {
+    "id": "3b170c25.924614",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Update stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=1",
+    "func": "\nlet soDangGoi = msg.payload.soDangGoi;\nmsg.topic = \"UPDATE sothutu stt SET stt.flagNext=1, stt.flagCall=1, stt.flagCalled=1, stt.flagCalled=1 WHERE stt.maSoTT=\"+soDangGoi+\" AND DATE(stt.ngayTao) = CURDATE();\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 580,
+    "y": 860,
+    "wires": [
+        ["e9cc7e3c.6d5de"]
+    ]
+}, {
+    "id": "99ea0862.0f50a8",
+    "type": "http request",
+    "z": "af96c0fb.ac388",
+    "name": "102",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://192.168.1.102",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "authType": "",
+    "x": 1290,
+    "y": 580,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "f987a0b6.fc63b",
+    "type": "function",
+    "z": "af96c0fb.ac388",
+    "name": "Display to led",
+    "func": "let message = msg.payload;\n\nmsg.headers = {\n     'content-type':'multipart/form-data'\n}\nmsg.payload = {\n    message: message\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1120,
+    "y": 580,
+    "wires": [
+        ["99ea0862.0f50a8"]
+    ]
+}, {
+    "id": "a5c502f9.3515a",
+    "type": "function",
+    "z": "17dbff45.60ac31",
+    "name": "Query MIN(stt.maSoTT)",
+    "func": "msg.topic = \"SELECT COUNT(stt.id) AS soLuotDoi FROM sothutu stt WHERE stt.maPhong='1000' AND stt.flagCalled=0 AND DATE(stt.ngayTao) = CURDATE();\"\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 670,
+    "y": 40,
+    "wires": [
+        ["ca08b78c.00a598"]
+    ]
+}, {
+    "id": "ca08b78c.00a598",
+    "type": "mysql",
+    "z": "17dbff45.60ac31",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 890,
+    "y": 40,
+    "wires": [
+        ["f2535950.1cb4f8"]
+    ]
+}, {
+    "id": "905c47ff.932e68",
+    "type": "change",
+    "z": "17dbff45.60ac31",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 410,
+    "y": 40,
+    "wires": [
+        ["a5c502f9.3515a"]
+    ]
+}, {
+    "id": "f2535950.1cb4f8",
+    "type": "function",
+    "z": "17dbff45.60ac31",
+    "name": "Respone maSTT",
+    "func": "\nif(msg.payload[0].soLuotDoi === null){\n    msg.payload = \"...\";\n} else {\n    msg.payload = msg.payload[0].soLuotDoi;\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1150,
+    "y": 40,
+    "wires": [
+        ["66d7db2a.ca5ed4"]
+    ]
+}, {
+    "id": "19c60c8.25023f4",
+    "type": "http in",
+    "z": "17dbff45.60ac31",
+    "name": "",
+    "url": "/ubnd_duclinh_apisoluotdoi1",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 130,
+    "y": 40,
+    "wires": [
+        ["905c47ff.932e68"]
+    ]
+}, {
+    "id": "66d7db2a.ca5ed4",
+    "type": "change",
+    "z": "17dbff45.60ac31",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 390,
+    "y": 80,
+    "wires": [
+        ["d57e3364.95f83"]
+    ]
+}, {
+    "id": "d57e3364.95f83",
+    "type": "http response",
+    "z": "17dbff45.60ac31",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 610,
+    "y": 80,
+    "wires": []
+}, {
+    "id": "2a8bdbf9.896c04",
+    "type": "function",
+    "z": "17dbff45.60ac31",
+    "name": "Query MIN(stt.maSoTT)",
+    "func": "msg.topic = \"SELECT COUNT(stt.id) AS soLuotDoi FROM sothutu stt WHERE stt.maPhong='2000' AND stt.flagCalled=0 AND DATE(stt.ngayTao) = CURDATE();\"\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 670,
+    "y": 160,
+    "wires": [
+        ["6f1b8170.7274f"]
+    ]
+}, {
+    "id": "6f1b8170.7274f",
+    "type": "mysql",
+    "z": "17dbff45.60ac31",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 890,
+    "y": 160,
+    "wires": [
+        ["b25ccbb9.79d1a8"]
+    ]
+}, {
+    "id": "1d16a89.8054257",
+    "type": "change",
+    "z": "17dbff45.60ac31",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 410,
+    "y": 160,
+    "wires": [
+        ["2a8bdbf9.896c04"]
+    ]
+}, {
+    "id": "b25ccbb9.79d1a8",
+    "type": "function",
+    "z": "17dbff45.60ac31",
+    "name": "Respone maSTT",
+    "func": "\nif(msg.payload[0].soLuotDoi === null){\n    msg.payload = \"...\";\n} else {\n    msg.payload = msg.payload[0].soLuotDoi;\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1150,
+    "y": 160,
+    "wires": [
+        ["6fab8076.d03a8"]
+    ]
+}, {
+    "id": "e6e892aa.e3ec5",
+    "type": "http in",
+    "z": "17dbff45.60ac31",
+    "name": "",
+    "url": "/ubnd_duclinh_apisoluotdoi2",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 130,
+    "y": 160,
+    "wires": [
+        ["1d16a89.8054257"]
+    ]
+}, {
+    "id": "6fab8076.d03a8",
+    "type": "change",
+    "z": "17dbff45.60ac31",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 390,
+    "y": 200,
+    "wires": [
+        ["d04c66b2.4e1538"]
+    ]
+}, {
+    "id": "d04c66b2.4e1538",
+    "type": "http response",
+    "z": "17dbff45.60ac31",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 610,
+    "y": 200,
+    "wires": []
+}, {
+    "id": "12c1b8eb.678af7",
+    "type": "function",
+    "z": "17dbff45.60ac31",
+    "name": "Query MIN(stt.maSoTT)",
+    "func": "msg.topic = \"SELECT COUNT(stt.id) AS soLuotDoi FROM sothutu stt WHERE stt.maPhong='3000' AND stt.flagCalled=0 AND DATE(stt.ngayTao) = CURDATE();\"\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 670,
+    "y": 260,
+    "wires": [
+        ["a61a502d.89ff5"]
+    ]
+}, {
+    "id": "a61a502d.89ff5",
+    "type": "mysql",
+    "z": "17dbff45.60ac31",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 890,
+    "y": 260,
+    "wires": [
+        ["ff6c5dbf.562ad"]
+    ]
+}, {
+    "id": "86dcd64d.0dcdc8",
+    "type": "change",
+    "z": "17dbff45.60ac31",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 410,
+    "y": 260,
+    "wires": [
+        ["12c1b8eb.678af7"]
+    ]
+}, {
+    "id": "ff6c5dbf.562ad",
+    "type": "function",
+    "z": "17dbff45.60ac31",
+    "name": "Respone maSTT",
+    "func": "\nif(msg.payload[0].soLuotDoi === null){\n    msg.payload = \"...\";\n} else {\n    msg.payload = msg.payload[0].soLuotDoi;\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1150,
+    "y": 260,
+    "wires": [
+        ["db2813c3.61c0c"]
+    ]
+}, {
+    "id": "c5da2779.0f46a8",
+    "type": "http in",
+    "z": "17dbff45.60ac31",
+    "name": "",
+    "url": "/ubnd_duclinh_apisoluotdoi3",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 130,
+    "y": 260,
+    "wires": [
+        ["86dcd64d.0dcdc8"]
+    ]
+}, {
+    "id": "db2813c3.61c0c",
+    "type": "change",
+    "z": "17dbff45.60ac31",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 390,
+    "y": 300,
+    "wires": [
+        ["5e2ee082.5b88"]
+    ]
+}, {
+    "id": "5e2ee082.5b88",
+    "type": "http response",
+    "z": "17dbff45.60ac31",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 610,
+    "y": 300,
+    "wires": []
+}, {
+    "id": "e196c30e.d883c",
+    "type": "function",
+    "z": "17dbff45.60ac31",
+    "name": "Query MIN(stt.maSoTT)",
+    "func": "msg.topic = \"SELECT COUNT(stt.id) AS soLuotDoi FROM sothutu stt WHERE stt.maPhong='4000' AND stt.flagCalled=0 AND DATE(stt.ngayTao) = CURDATE();\"\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 670,
+    "y": 380,
+    "wires": [
+        ["76df365e.4b88f8"]
+    ]
+}, {
+    "id": "76df365e.4b88f8",
+    "type": "mysql",
+    "z": "17dbff45.60ac31",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 890,
+    "y": 380,
+    "wires": [
+        ["282a966a.36c08a"]
+    ]
+}, {
+    "id": "6a5adbfa.bc6f44",
+    "type": "change",
+    "z": "17dbff45.60ac31",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 410,
+    "y": 380,
+    "wires": [
+        ["e196c30e.d883c"]
+    ]
+}, {
+    "id": "282a966a.36c08a",
+    "type": "function",
+    "z": "17dbff45.60ac31",
+    "name": "Respone maSTT",
+    "func": "\nif(msg.payload[0].soLuotDoi === null){\n    msg.payload = \"...\";\n} else {\n    msg.payload = msg.payload[0].soLuotDoi;\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1150,
+    "y": 380,
+    "wires": [
+        ["943d8947.eb4718"]
+    ]
+}, {
+    "id": "1fa8c6bc.91ab69",
+    "type": "http in",
+    "z": "17dbff45.60ac31",
+    "name": "",
+    "url": "/ubnd_duclinh_apisoluotdoi4",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 130,
+    "y": 380,
+    "wires": [
+        ["6a5adbfa.bc6f44"]
+    ]
+}, {
+    "id": "943d8947.eb4718",
+    "type": "change",
+    "z": "17dbff45.60ac31",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 390,
+    "y": 420,
+    "wires": [
+        ["5a02d7a3.d5b888"]
+    ]
+}, {
+    "id": "5a02d7a3.d5b888",
+    "type": "http response",
+    "z": "17dbff45.60ac31",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 610,
+    "y": 420,
+    "wires": []
+}, {
+    "id": "fd2c30f1.bad93",
+    "type": "function",
+    "z": "b3aa8abf.87e028",
+    "name": "Query MIN(stt.maSoTT)",
+    "func": "msg.topic = \"SELECT MIN(stt.maSoTT) AS maSoTT FROM sothutu stt WHERE stt.maPhong='1000' AND stt.flagWaiting=1 AND (stt.flagCalled=1 OR stt.flagCalled=0) AND DATE(stt.ngayTao) = CURDATE();\"\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 670,
+    "y": 60,
+    "wires": [
+        ["e1784e85.54f5e"]
+    ]
+}, {
+    "id": "e1784e85.54f5e",
+    "type": "mysql",
+    "z": "b3aa8abf.87e028",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 890,
+    "y": 60,
+    "wires": [
+        ["aad91d10.39c7f"]
+    ]
+}, {
+    "id": "cc5315a0.427868",
+    "type": "change",
+    "z": "b3aa8abf.87e028",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 390,
+    "y": 60,
+    "wires": [
+        ["fd2c30f1.bad93"]
+    ]
+}, {
+    "id": "aad91d10.39c7f",
+    "type": "function",
+    "z": "b3aa8abf.87e028",
+    "name": "Respone maSTT",
+    "func": "\nif(msg.payload[0].maSoTT === null){\n    msg.payload = \"...\";\n} else {\n    msg.payload = msg.payload[0].maSoTT;\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1150,
+    "y": 60,
+    "wires": [
+        ["8b56c9b5.c1ebb8"]
+    ]
+}, {
+    "id": "fb295d3b.4ba49",
+    "type": "http in",
+    "z": "b3aa8abf.87e028",
+    "name": "",
+    "url": "/ubnd_duclinh_apisodanggoi1",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 140,
+    "y": 60,
+    "wires": [
+        ["cc5315a0.427868"]
+    ]
+}, {
+    "id": "8b56c9b5.c1ebb8",
+    "type": "change",
+    "z": "b3aa8abf.87e028",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 370,
+    "y": 100,
+    "wires": [
+        ["1daad6dc.8d49b9"]
+    ]
+}, {
+    "id": "1daad6dc.8d49b9",
+    "type": "http response",
+    "z": "b3aa8abf.87e028",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 610,
+    "y": 100,
+    "wires": []
+}, {
+    "id": "7f8b389b.d4b998",
+    "type": "function",
+    "z": "b3aa8abf.87e028",
+    "name": "Query MIN(stt.maSoTT)",
+    "func": "msg.topic = \"SELECT MIN(stt.maSoTT) AS maSoTT FROM sothutu stt WHERE stt.maPhong='2000' AND stt.flagWaiting=1 AND (stt.flagCalled=1 OR stt.flagCalled=0) AND DATE(stt.ngayTao) = CURDATE();\"\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 670,
+    "y": 160,
+    "wires": [
+        ["1b9f7357.e0b13d"]
+    ]
+}, {
+    "id": "1b9f7357.e0b13d",
+    "type": "mysql",
+    "z": "b3aa8abf.87e028",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 890,
+    "y": 160,
+    "wires": [
+        ["9085781f.ccccf8"]
+    ]
+}, {
+    "id": "84b4edc1.bc731",
+    "type": "change",
+    "z": "b3aa8abf.87e028",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 390,
+    "y": 160,
+    "wires": [
+        ["7f8b389b.d4b998"]
+    ]
+}, {
+    "id": "9085781f.ccccf8",
+    "type": "function",
+    "z": "b3aa8abf.87e028",
+    "name": "Respone maSTT",
+    "func": "\nif(msg.payload[0].maSoTT === null){\n    msg.payload = \"...\";\n} else {\n    msg.payload = msg.payload[0].maSoTT;\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1150,
+    "y": 160,
+    "wires": [
+        ["66aa82a6.2080fc"]
+    ]
+}, {
+    "id": "a4ec7562.16e888",
+    "type": "http in",
+    "z": "b3aa8abf.87e028",
+    "name": "",
+    "url": "/ubnd_duclinh_apisodanggoi2",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 140,
+    "y": 160,
+    "wires": [
+        ["84b4edc1.bc731"]
+    ]
+}, {
+    "id": "66aa82a6.2080fc",
+    "type": "change",
+    "z": "b3aa8abf.87e028",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 370,
+    "y": 200,
+    "wires": [
+        ["ee184658.cf88f8"]
+    ]
+}, {
+    "id": "ee184658.cf88f8",
+    "type": "http response",
+    "z": "b3aa8abf.87e028",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 610,
+    "y": 200,
+    "wires": []
+}, {
+    "id": "432b7d7a.cc93f4",
+    "type": "function",
+    "z": "b3aa8abf.87e028",
+    "name": "Query MIN(stt.maSoTT)",
+    "func": "msg.topic = \"SELECT MIN(stt.maSoTT) AS maSoTT FROM sothutu stt WHERE stt.maPhong='3000' AND stt.flagWaiting=1 AND (stt.flagCalled=1 OR stt.flagCalled=0) AND DATE(stt.ngayTao) = CURDATE();\"\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 670,
+    "y": 260,
+    "wires": [
+        ["11ed1d43.c91593"]
+    ]
+}, {
+    "id": "11ed1d43.c91593",
+    "type": "mysql",
+    "z": "b3aa8abf.87e028",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 890,
+    "y": 260,
+    "wires": [
+        ["17adad5a.8f6f43"]
+    ]
+}, {
+    "id": "aa9363f0.ffc1f",
+    "type": "change",
+    "z": "b3aa8abf.87e028",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 390,
+    "y": 260,
+    "wires": [
+        ["432b7d7a.cc93f4"]
+    ]
+}, {
+    "id": "17adad5a.8f6f43",
+    "type": "function",
+    "z": "b3aa8abf.87e028",
+    "name": "Respone maSTT",
+    "func": "\nif(msg.payload[0].maSoTT === null){\n    msg.payload = \"...\";\n} else {\n    msg.payload = msg.payload[0].maSoTT;\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1150,
+    "y": 260,
+    "wires": [
+        ["5776f05a.4663d"]
+    ]
+}, {
+    "id": "6c158da2.ea2594",
+    "type": "http in",
+    "z": "b3aa8abf.87e028",
+    "name": "",
+    "url": "/ubnd_duclinh_apisodanggoi3",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 140,
+    "y": 260,
+    "wires": [
+        ["aa9363f0.ffc1f"]
+    ]
+}, {
+    "id": "5776f05a.4663d",
+    "type": "change",
+    "z": "b3aa8abf.87e028",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 370,
+    "y": 300,
+    "wires": [
+        ["9fa85949.f6c9c8"]
+    ]
+}, {
+    "id": "9fa85949.f6c9c8",
+    "type": "http response",
+    "z": "b3aa8abf.87e028",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 610,
+    "y": 300,
+    "wires": []
+}, {
+    "id": "a86f4fb4.48786",
+    "type": "function",
+    "z": "b3aa8abf.87e028",
+    "name": "Query MIN(stt.maSoTT)",
+    "func": "msg.topic = \"SELECT MIN(stt.maSoTT) AS maSoTT FROM sothutu stt WHERE stt.maPhong='4000' AND stt.flagWaiting=1 AND (stt.flagCalled=1 OR stt.flagCalled=0) AND DATE(stt.ngayTao) = CURDATE();\"\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 670,
+    "y": 360,
+    "wires": [
+        ["8b6c92ff.84693"]
+    ]
+}, {
+    "id": "8b6c92ff.84693",
+    "type": "mysql",
+    "z": "b3aa8abf.87e028",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 890,
+    "y": 360,
+    "wires": [
+        ["76b15bc1.d4cb34"]
+    ]
+}, {
+    "id": "1d783c7d.da68e4",
+    "type": "change",
+    "z": "b3aa8abf.87e028",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 390,
+    "y": 360,
+    "wires": [
+        ["a86f4fb4.48786"]
+    ]
+}, {
+    "id": "76b15bc1.d4cb34",
+    "type": "function",
+    "z": "b3aa8abf.87e028",
+    "name": "Respone maSTT",
+    "func": "\nif(msg.payload[0].maSoTT === null){\n    msg.payload = \"...\";\n} else {\n    msg.payload = msg.payload[0].maSoTT;\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1150,
+    "y": 360,
+    "wires": [
+        ["663e6639.660dc8"]
+    ]
+}, {
+    "id": "ce926cf.33ffe9",
+    "type": "http in",
+    "z": "b3aa8abf.87e028",
+    "name": "",
+    "url": "/ubnd_duclinh_apisodanggoi4",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 140,
+    "y": 360,
+    "wires": [
+        ["1d783c7d.da68e4"]
+    ]
+}, {
+    "id": "663e6639.660dc8",
+    "type": "change",
+    "z": "b3aa8abf.87e028",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 370,
+    "y": 400,
+    "wires": [
+        ["152acb00.e65425"]
+    ]
+}, {
+    "id": "152acb00.e65425",
+    "type": "http response",
+    "z": "b3aa8abf.87e028",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 610,
+    "y": 400,
+    "wires": []
+}, {
+    "id": "5ca2711c.17dc5",
+    "type": "http in",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "url": "/ubnd_duclinh_apinextnumber3",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 190,
+    "y": 80,
+    "wires": [
+        ["13a2839b.5d788c", "e90a1c63.1b854"]
+    ]
+}, {
+    "id": "279f3e66.51fee2",
+    "type": "http response",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 1030,
+    "y": 120,
+    "wires": []
+}, {
+    "id": "f9055f04.77567",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Respone maSTT",
+    "func": "\nif(msg.payload[0].maSoTT === null){\n    msg.payload = \"Hết số\";\n} else {\n    msg.payload = msg.payload[0].maSoTT;\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 650,
+    "y": 120,
+    "wires": [
+        ["22b06b91.0cd444", "4ea01ea7.97c9f", "36a8376e.a15918"]
+    ]
+}, {
+    "id": "13a2839b.5d788c",
+    "type": "debug",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 110,
+    "y": 40,
+    "wires": []
+}, {
+    "id": "22b06b91.0cd444",
+    "type": "debug",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 730,
+    "y": 80,
+    "wires": []
+}, {
+    "id": "541b50ca.bf253",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Query MIN(stt.maSoTT)",
+    "func": "msg.topic = \"SELECT MIN(stt.maSoTT) AS maSoTT FROM sothutu stt WHERE stt.flagCalled=0 AND stt.maPhong='3000' AND DATE(stt.ngayTao) = CURDATE();\"\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 150,
+    "y": 160,
+    "wires": [
+        ["2c510eb6.c7cc42"]
+    ]
+}, {
+    "id": "2c510eb6.c7cc42",
+    "type": "mysql",
+    "z": "63eee8e.74f4718",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 390,
+    "y": 160,
+    "wires": [
+        ["f4d93919.31dd58", "f9055f04.77567", "1f2941f0.0ea3de", "edaa58e5.3b35c8"]
+    ]
+}, {
+    "id": "f4d93919.31dd58",
+    "type": "debug",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload[0].maSoTT",
+    "targetType": "msg",
+    "x": 470,
+    "y": 80,
+    "wires": []
+}, {
+    "id": "e90a1c63.1b854",
+    "type": "change",
+    "z": "63eee8e.74f4718",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 130,
+    "y": 120,
+    "wires": [
+        ["541b50ca.bf253"]
+    ]
+}, {
+    "id": "4ea01ea7.97c9f",
+    "type": "change",
+    "z": "63eee8e.74f4718",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 870,
+    "y": 120,
+    "wires": [
+        ["279f3e66.51fee2"]
+    ]
+}, {
+    "id": "fcd620b6.fc0d4",
+    "type": "http response",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 910,
+    "y": 500,
+    "wires": []
+}, {
+    "id": "ed4022be.7f4b3",
+    "type": "change",
+    "z": "63eee8e.74f4718",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 690,
+    "y": 500,
+    "wires": [
+        ["fcd620b6.fc0d4"]
+    ]
+}, {
+    "id": "51c48481.53586c",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Response",
+    "func": "msg.payload = \"Đang gọi\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 400,
+    "y": 480,
+    "wires": [
+        ["ed4022be.7f4b3"]
+    ]
+}, {
+    "id": "3174b91c.af0e26",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Response",
+    "func": "msg.payload = \"Hết số\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 400,
+    "y": 520,
+    "wires": [
+        ["ed4022be.7f4b3"]
+    ]
+}, {
+    "id": "70ebe621.46ebe8",
+    "type": "google-tts",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "inputField": "payload",
+    "inputFieldType": "msg",
+    "outputField": "payload",
+    "outputFieldType": "msg",
+    "languageField": "vi",
+    "languageFieldType": "str",
+    "speedField": "2",
+    "speedFieldType": "num",
+    "x": 720,
+    "y": 420,
+    "wires": [
+        ["51c48481.53586c", "705a71c6.5d2e8"]
+    ]
+}, {
+    "id": "83f0d385.5b68",
+    "type": "switch",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "property": "payload.soDangGoi",
+    "propertyType": "msg",
+    "rules": [{
+        "t": "neq",
+        "v": "Hết số",
+        "vt": "str"
+    }, {
+        "t": "eq",
+        "v": "Hết số",
+        "vt": "str"
+    }],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 290,
+    "y": 340,
+    "wires": [
+        ["284a53b7.79f51c", "2b3c9501.e1452a", "ecb5e854.1abef8"],
+        ["3174b91c.af0e26"]
+    ]
+}, {
+    "id": "284a53b7.79f51c",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Parse string call number",
+    "func": "let soDangGoi = msg.payload.soDangGoi;\nlet len = soDangGoi.length;\nsoDangGoi = soDangGoi.split(\"\").join(\" \");\nmsg.payload = \"Xin mời số \"+soDangGoi+\" vào quầy số 3\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 450,
+    "y": 420,
+    "wires": [
+        ["70ebe621.46ebe8"]
+    ]
+}, {
+    "id": "2b3c9501.e1452a",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Update stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=1",
+    "func": "\nlet soDangGoi = msg.payload.soDangGoi;\nlet soDaGoi = soDangGoi-1;\nmsg.topic = \"UPDATE sothutu stt SET stt.flagNext=1, stt.flagCall=1, stt.flagCalled=1, stt.flagWaiting=0, stt.flagCalled=1 WHERE stt.maSoTT=\"+soDaGoi+\" AND DATE(stt.ngayTao) = CURDATE();\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 580,
+    "y": 260,
+    "wires": [
+        ["de388691.fb6ec8"]
+    ]
+}, {
+    "id": "bde88b7d.7eb068",
+    "type": "change",
+    "z": "63eee8e.74f4718",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 130,
+    "y": 340,
+    "wires": [
+        ["83f0d385.5b68"]
+    ]
+}, {
+    "id": "de388691.fb6ec8",
+    "type": "mysql",
+    "z": "63eee8e.74f4718",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 930,
+    "y": 300,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "94143fef.f3f37",
+    "type": "http in",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "url": "/ubnd_duclinh_apicallnumber3",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 180,
+    "y": 280,
+    "wires": [
+        ["b2a5883.025f378", "bde88b7d.7eb068"]
+    ]
+}, {
+    "id": "b2a5883.025f378",
+    "type": "debug",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 110,
+    "y": 240,
+    "wires": []
+}, {
+    "id": "edaa58e5.3b35c8",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Update stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=0",
+    "func": "\nif(msg.payload[0].maSoTT !== null){\n    let soDangGoi = msg.payload[0].maSoTT;\n    let soDaGoi = soDangGoi-1;\n    msg.topic = \"UPDATE sothutu stt SET stt.flagNext=1, stt.flagCall=1, flagWaiting=0 WHERE stt.maSoTT=\"+soDaGoi+\" AND DATE(stt.ngayTao) = CURDATE();\";\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 740,
+    "y": 200,
+    "wires": [
+        ["5158bc8.26dc244"]
+    ]
+}, {
+    "id": "5158bc8.26dc244",
+    "type": "mysql",
+    "z": "63eee8e.74f4718",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 1050,
+    "y": 200,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "1f2941f0.0ea3de",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Update stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=1",
+    "func": "\n\n\nif(msg.payload[0].maSoTT !== null){\n    msg.topic = \"UPDATE sothutu stt SET stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=1 WHERE stt.maSoTT=\"+msg.payload[0].maSoTT+\" AND DATE(stt.ngayTao) = CURDATE();\";\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 740,
+    "y": 160,
+    "wires": [
+        ["8d95bd2f.c55e7"]
+    ]
+}, {
+    "id": "8d95bd2f.c55e7",
+    "type": "mysql",
+    "z": "63eee8e.74f4718",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 1050,
+    "y": 160,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "705a71c6.5d2e8",
+    "type": "audio",
+    "z": "63eee8e.74f4718",
+    "x": 930,
+    "y": 420,
+    "wires": []
+}, {
+    "id": "f01e061b.b34a08",
+    "type": "audio",
+    "z": "63eee8e.74f4718",
+    "source": "C:\\\\Users\\\\Admin\\\\.node-red\\\\sound\\\\dingdong.mp3",
+    "name": "dingdong.mp3",
+    "x": 1140,
+    "y": 80,
+    "wires": []
+}, {
+    "id": "36a8376e.a15918",
+    "type": "switch",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [{
+        "t": "neq",
+        "v": "Hết số",
+        "vt": "str"
+    }],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 1,
+    "x": 920,
+    "y": 80,
+    "wires": [
+        ["f01e061b.b34a08", "f8f91549.a5d2d8"]
+    ]
+}, {
+    "id": "ecb5e854.1abef8",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Update stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=1",
+    "func": "\nlet soDangGoi = msg.payload.soDangGoi;\nmsg.topic = \"UPDATE sothutu stt SET stt.flagNext=1, stt.flagCall=1, stt.flagCalled=1, stt.flagCalled=1 WHERE stt.maSoTT=\"+soDangGoi+\" AND DATE(stt.ngayTao) = CURDATE();\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 580,
+    "y": 320,
+    "wires": [
+        ["de388691.fb6ec8"]
+    ]
+}, {
+    "id": "b083b6d5.8b85f8",
+    "type": "http request",
+    "z": "63eee8e.74f4718",
+    "name": "103",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://192.168.1.103",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "authType": "",
+    "x": 1290,
+    "y": 40,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "f8f91549.a5d2d8",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Display to led",
+    "func": "let message = msg.payload;\n\nmsg.headers = {\n     'content-type':'multipart/form-data'\n}\nmsg.payload = {\n    message: message\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1120,
+    "y": 40,
+    "wires": [
+        ["b083b6d5.8b85f8"]
+    ]
+}, {
+    "id": "bbb0e3e7.d9181",
+    "type": "http in",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "url": "/ubnd_duclinh_apinextnumber4",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 190,
+    "y": 620,
+    "wires": [
+        ["8d50c0d5.f61c1", "639993dc.08c73c"]
+    ]
+}, {
+    "id": "ad7803dc.b631f",
+    "type": "http response",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 1030,
+    "y": 660,
+    "wires": []
+}, {
+    "id": "4ae906b8.f8f288",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Respone maSTT",
+    "func": "\nif(msg.payload[0].maSoTT === null){\n    msg.payload = \"Hết số\";\n} else {\n    msg.payload = msg.payload[0].maSoTT;\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 650,
+    "y": 660,
+    "wires": [
+        ["9895c2be.c0389", "2e7c573a.316128", "c6964778.0a8b98"]
+    ]
+}, {
+    "id": "8d50c0d5.f61c1",
+    "type": "debug",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 110,
+    "y": 580,
+    "wires": []
+}, {
+    "id": "9895c2be.c0389",
+    "type": "debug",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 730,
+    "y": 620,
+    "wires": []
+}, {
+    "id": "25130a62.86f286",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Query MIN(stt.maSoTT)",
+    "func": "msg.topic = \"SELECT MIN(stt.maSoTT) AS maSoTT FROM sothutu stt WHERE stt.flagCalled=0 AND stt.maPhong='4000' AND DATE(stt.ngayTao) = CURDATE();\"\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 150,
+    "y": 700,
+    "wires": [
+        ["5f6597c6.669e08"]
+    ]
+}, {
+    "id": "5f6597c6.669e08",
+    "type": "mysql",
+    "z": "63eee8e.74f4718",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 390,
+    "y": 700,
+    "wires": [
+        ["d14a7356.a85d4", "4ae906b8.f8f288", "869ef3e6.ca1f3", "5b1c4c30.c09c44"]
+    ]
+}, {
+    "id": "d14a7356.a85d4",
+    "type": "debug",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload[0].maSoTT",
+    "targetType": "msg",
+    "x": 470,
+    "y": 620,
+    "wires": []
+}, {
+    "id": "639993dc.08c73c",
+    "type": "change",
+    "z": "63eee8e.74f4718",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 130,
+    "y": 660,
+    "wires": [
+        ["25130a62.86f286"]
+    ]
+}, {
+    "id": "2e7c573a.316128",
+    "type": "change",
+    "z": "63eee8e.74f4718",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 870,
+    "y": 660,
+    "wires": [
+        ["ad7803dc.b631f"]
+    ]
+}, {
+    "id": "511d3f1d.0c0ae",
+    "type": "http response",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 910,
+    "y": 1040,
+    "wires": []
+}, {
+    "id": "ce367dff.d3423",
+    "type": "change",
+    "z": "63eee8e.74f4718",
+    "name": "get req, res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "msg",
+        "to": "req",
+        "tot": "flow"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "msg",
+        "to": "res",
+        "tot": "flow"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 690,
+    "y": 1040,
+    "wires": [
+        ["511d3f1d.0c0ae"]
+    ]
+}, {
+    "id": "79137bcc.f7d994",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Response",
+    "func": "msg.payload = \"Đang gọi\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 400,
+    "y": 1020,
+    "wires": [
+        ["ce367dff.d3423"]
+    ]
+}, {
+    "id": "5a7657db.4b9e68",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Response",
+    "func": "msg.payload = \"Hết số\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 400,
+    "y": 1060,
+    "wires": [
+        ["ce367dff.d3423"]
+    ]
+}, {
+    "id": "ab1e2711.4b1718",
+    "type": "google-tts",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "inputField": "payload",
+    "inputFieldType": "msg",
+    "outputField": "payload",
+    "outputFieldType": "msg",
+    "languageField": "vi",
+    "languageFieldType": "str",
+    "speedField": "2",
+    "speedFieldType": "num",
+    "x": 720,
+    "y": 960,
+    "wires": [
+        ["79137bcc.f7d994", "67829565.41cc7c"]
+    ]
+}, {
+    "id": "5b81c956.780038",
+    "type": "switch",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "property": "payload.soDangGoi",
+    "propertyType": "msg",
+    "rules": [{
+        "t": "neq",
+        "v": "Hết số",
+        "vt": "str"
+    }, {
+        "t": "eq",
+        "v": "Hết số",
+        "vt": "str"
+    }],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 290,
+    "y": 880,
+    "wires": [
+        ["3bad7397.2a1d9c", "125c76e5.cf9bf9", "f8db9e49.6abb2"],
+        ["5a7657db.4b9e68"]
+    ]
+}, {
+    "id": "3bad7397.2a1d9c",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Parse string call number",
+    "func": "let soDangGoi = msg.payload.soDangGoi;\nlet len = soDangGoi.length;\nsoDangGoi = soDangGoi.split(\"\").join(\" \");\nmsg.payload = \"Xin mời số \"+soDangGoi+\" vào quầy số 4\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 450,
+    "y": 960,
+    "wires": [
+        ["ab1e2711.4b1718"]
+    ]
+}, {
+    "id": "125c76e5.cf9bf9",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Update stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=1",
+    "func": "\nlet soDangGoi = msg.payload.soDangGoi;\nlet soDaGoi = soDangGoi-1;\nmsg.topic = \"UPDATE sothutu stt SET stt.flagNext=1, stt.flagCall=1, stt.flagCalled=1, stt.flagWaiting=0, stt.flagCalled=1 WHERE stt.maSoTT=\"+soDaGoi+\" AND DATE(stt.ngayTao) = CURDATE();\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 580,
+    "y": 800,
+    "wires": [
+        ["e04540f6.df78b"]
+    ]
+}, {
+    "id": "8946a541.e622e8",
+    "type": "change",
+    "z": "63eee8e.74f4718",
+    "name": "save req and res",
+    "rules": [{
+        "t": "set",
+        "p": "req",
+        "pt": "flow",
+        "to": "req",
+        "tot": "msg"
+    }, {
+        "t": "set",
+        "p": "res",
+        "pt": "flow",
+        "to": "res",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 130,
+    "y": 880,
+    "wires": [
+        ["5b81c956.780038"]
+    ]
+}, {
+    "id": "e04540f6.df78b",
+    "type": "mysql",
+    "z": "63eee8e.74f4718",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 930,
+    "y": 840,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "3db150aa.2751f",
+    "type": "http in",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "url": "/ubnd_duclinh_apicallnumber4",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 180,
+    "y": 820,
+    "wires": [
+        ["7ea0e147.2a9ef", "8946a541.e622e8"]
+    ]
+}, {
+    "id": "7ea0e147.2a9ef",
+    "type": "debug",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 110,
+    "y": 780,
+    "wires": []
+}, {
+    "id": "5b1c4c30.c09c44",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Update stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=0",
+    "func": "\nif(msg.payload[0].maSoTT !== null){\n    let soDangGoi = msg.payload[0].maSoTT;\n    let soDaGoi = soDangGoi-1;\n    msg.topic = \"UPDATE sothutu stt SET stt.flagNext=1, stt.flagCall=1, flagWaiting=0 WHERE stt.maSoTT=\"+soDaGoi+\" AND DATE(stt.ngayTao) = CURDATE();\";\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 740,
+    "y": 740,
+    "wires": [
+        ["2eaada16.fe2076"]
+    ]
+}, {
+    "id": "2eaada16.fe2076",
+    "type": "mysql",
+    "z": "63eee8e.74f4718",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 1050,
+    "y": 740,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "869ef3e6.ca1f3",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Update stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=1",
+    "func": "\n\n\nif(msg.payload[0].maSoTT !== null){\n    msg.topic = \"UPDATE sothutu stt SET stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=1 WHERE stt.maSoTT=\"+msg.payload[0].maSoTT+\" AND DATE(stt.ngayTao) = CURDATE();\";\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 740,
+    "y": 700,
+    "wires": [
+        ["5348abf7.a663c4"]
+    ]
+}, {
+    "id": "5348abf7.a663c4",
+    "type": "mysql",
+    "z": "63eee8e.74f4718",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 1050,
+    "y": 700,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "67829565.41cc7c",
+    "type": "audio",
+    "z": "63eee8e.74f4718",
+    "x": 930,
+    "y": 960,
+    "wires": []
+}, {
+    "id": "1afc7c5d.51b4e4",
+    "type": "audio",
+    "z": "63eee8e.74f4718",
+    "source": "C:\\\\Users\\\\Admin\\\\.node-red\\\\sound\\\\dingdong.mp3",
+    "name": "dingdong.mp3",
+    "x": 1140,
+    "y": 620,
+    "wires": []
+}, {
+    "id": "c6964778.0a8b98",
+    "type": "switch",
+    "z": "63eee8e.74f4718",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [{
+        "t": "neq",
+        "v": "Hết số",
+        "vt": "str"
+    }],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 1,
+    "x": 920,
+    "y": 620,
+    "wires": [
+        ["1afc7c5d.51b4e4", "7624866.db74178"]
+    ]
+}, {
+    "id": "f8db9e49.6abb2",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Update stt.flagNext=1, stt.flagCall=1, stt.flagWaiting=1",
+    "func": "\nlet soDangGoi = msg.payload.soDangGoi;\nmsg.topic = \"UPDATE sothutu stt SET stt.flagNext=1, stt.flagCall=1, stt.flagCalled=1, stt.flagCalled=1 WHERE stt.maSoTT=\"+soDangGoi+\" AND DATE(stt.ngayTao) = CURDATE();\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 580,
+    "y": 860,
+    "wires": [
+        ["e04540f6.df78b"]
+    ]
+}, {
+    "id": "cd48a7e6.3d7ad8",
+    "type": "http request",
+    "z": "63eee8e.74f4718",
+    "name": "104",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://192.168.1.104",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "authType": "",
+    "x": 1290,
+    "y": 580,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "7624866.db74178",
+    "type": "function",
+    "z": "63eee8e.74f4718",
+    "name": "Display to led",
+    "func": "let message = msg.payload;\n\nmsg.headers = {\n     'content-type':'multipart/form-data'\n}\nmsg.payload = {\n    message: message\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1120,
+    "y": 580,
+    "wires": [
+        ["cd48a7e6.3d7ad8"]
+    ]
+}, {
+    "id": "5c7351.a936acb",
+    "type": "http in",
+    "z": "f584d3bb.6d293",
+    "name": "",
+    "url": "/ubnd_duclinh_apihailong1",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 190,
+    "y": 60,
+    "wires": [
+        ["386c8e89.ffa4c2", "351692e4.78d38e"]
+    ]
+}, {
+    "id": "7caccb13.6b7554",
+    "type": "http response",
+    "z": "f584d3bb.6d293",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 670,
+    "y": 40,
+    "wires": []
+}, {
+    "id": "386c8e89.ffa4c2",
+    "type": "function",
+    "z": "f584d3bb.6d293",
+    "name": "response",
+    "func": "msg.payload = \"success\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 40,
+    "wires": [
+        ["7caccb13.6b7554"]
+    ]
+}, {
+    "id": "351692e4.78d38e",
+    "type": "function",
+    "z": "f584d3bb.6d293",
+    "name": "insert db",
+    "func": "let maQuay = msg.payload.maQuay;\nlet status = msg.payload.danhgia;\nmsg.topic = `INSERT INTO binhchon (maQuay, status) VALUES ('${maQuay}', '${status}');`;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 80,
+    "wires": [
+        ["c8aa438b.d8086"]
+    ]
+}, {
+    "id": "c8aa438b.d8086",
+    "type": "mysql",
+    "z": "f584d3bb.6d293",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 690,
+    "y": 80,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "aaabaaae.835ea8",
+    "type": "http in",
+    "z": "f584d3bb.6d293",
+    "name": "",
+    "url": "/ubnd_duclinh_apikhonghailong1",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 170,
+    "y": 160,
+    "wires": [
+        ["838f9045.eca1b", "2580915.950746e"]
+    ]
+}, {
+    "id": "b9c72d4.2fb93d",
+    "type": "http response",
+    "z": "f584d3bb.6d293",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 670,
+    "y": 140,
+    "wires": []
+}, {
+    "id": "838f9045.eca1b",
+    "type": "function",
+    "z": "f584d3bb.6d293",
+    "name": "response",
+    "func": "msg.payload = \"success\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 140,
+    "wires": [
+        ["b9c72d4.2fb93d"]
+    ]
+}, {
+    "id": "2580915.950746e",
+    "type": "function",
+    "z": "f584d3bb.6d293",
+    "name": "insert db",
+    "func": "let maQuay = msg.payload.maQuay;\nlet status = msg.payload.danhgia;\nmsg.topic = `INSERT INTO binhchon (maQuay, status) VALUES ('${maQuay}', '${status}');`;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 180,
+    "wires": [
+        ["1b330136.ae7e0f"]
+    ]
+}, {
+    "id": "1b330136.ae7e0f",
+    "type": "mysql",
+    "z": "f584d3bb.6d293",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 690,
+    "y": 180,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "936f3714.74f7c8",
+    "type": "http in",
+    "z": "f584d3bb.6d293",
+    "name": "",
+    "url": "/ubnd_duclinh_apihailong2",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 190,
+    "y": 260,
+    "wires": [
+        ["e1f4ccfd.c00e1", "dc06d463.95b008"]
+    ]
+}, {
+    "id": "c4ab509.21438b",
+    "type": "http response",
+    "z": "f584d3bb.6d293",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 670,
+    "y": 240,
+    "wires": []
+}, {
+    "id": "e1f4ccfd.c00e1",
+    "type": "function",
+    "z": "f584d3bb.6d293",
+    "name": "response",
+    "func": "msg.payload = \"success\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 240,
+    "wires": [
+        ["c4ab509.21438b"]
+    ]
+}, {
+    "id": "dc06d463.95b008",
+    "type": "function",
+    "z": "f584d3bb.6d293",
+    "name": "insert db",
+    "func": "let maQuay = msg.payload.maQuay;\nlet status = msg.payload.danhgia;\nmsg.topic = `INSERT INTO binhchon (maQuay, status) VALUES ('${maQuay}', '${status}');`;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 280,
+    "wires": [
+        ["497312e9.b8b65c"]
+    ]
+}, {
+    "id": "497312e9.b8b65c",
+    "type": "mysql",
+    "z": "f584d3bb.6d293",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 690,
+    "y": 280,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "1393a90e.b8b6a7",
+    "type": "http in",
+    "z": "f584d3bb.6d293",
+    "name": "",
+    "url": "/ubnd_duclinh_apikhonghailong2",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 170,
+    "y": 360,
+    "wires": [
+        ["68b1547d.720f0c", "ac15b704.2a7188"]
+    ]
+}, {
+    "id": "454fb640.18f198",
+    "type": "http response",
+    "z": "f584d3bb.6d293",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 670,
+    "y": 340,
+    "wires": []
+}, {
+    "id": "68b1547d.720f0c",
+    "type": "function",
+    "z": "f584d3bb.6d293",
+    "name": "response",
+    "func": "msg.payload = \"success\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 340,
+    "wires": [
+        ["454fb640.18f198"]
+    ]
+}, {
+    "id": "ac15b704.2a7188",
+    "type": "function",
+    "z": "f584d3bb.6d293",
+    "name": "insert db",
+    "func": "let maQuay = msg.payload.maQuay;\nlet status = msg.payload.danhgia;\nmsg.topic = `INSERT INTO binhchon (maQuay, status) VALUES ('${maQuay}', '${status}');`;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 380,
+    "wires": [
+        ["348a95e1.279f2a"]
+    ]
+}, {
+    "id": "348a95e1.279f2a",
+    "type": "mysql",
+    "z": "f584d3bb.6d293",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 690,
+    "y": 380,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "1476831a.bf64ed",
+    "type": "http in",
+    "z": "f584d3bb.6d293",
+    "name": "",
+    "url": "/ubnd_duclinh_apihailong3",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 190,
+    "y": 460,
+    "wires": [
+        ["2634753f.2596ba", "b0acbc78.4edb2"]
+    ]
+}, {
+    "id": "ad674f1b.892be",
+    "type": "http response",
+    "z": "f584d3bb.6d293",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 670,
+    "y": 440,
+    "wires": []
+}, {
+    "id": "2634753f.2596ba",
+    "type": "function",
+    "z": "f584d3bb.6d293",
+    "name": "response",
+    "func": "msg.payload = \"success\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 440,
+    "wires": [
+        ["ad674f1b.892be"]
+    ]
+}, {
+    "id": "b0acbc78.4edb2",
+    "type": "function",
+    "z": "f584d3bb.6d293",
+    "name": "insert db",
+    "func": "let maQuay = msg.payload.maQuay;\nlet status = msg.payload.danhgia;\nmsg.topic = `INSERT INTO binhchon (maQuay, status) VALUES ('${maQuay}', '${status}');`;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 480,
+    "wires": [
+        ["480139bd.eb75e8"]
+    ]
+}, {
+    "id": "480139bd.eb75e8",
+    "type": "mysql",
+    "z": "f584d3bb.6d293",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 690,
+    "y": 480,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "51474554.84326c",
+    "type": "http in",
+    "z": "f584d3bb.6d293",
+    "name": "",
+    "url": "/ubnd_duclinh_apikhonghailong3",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 170,
+    "y": 560,
+    "wires": [
+        ["15b774c.b477f8b", "740c0d01.af07a4"]
+    ]
+}, {
+    "id": "f5c689d9.0c2c78",
+    "type": "http response",
+    "z": "f584d3bb.6d293",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 670,
+    "y": 540,
+    "wires": []
+}, {
+    "id": "15b774c.b477f8b",
+    "type": "function",
+    "z": "f584d3bb.6d293",
+    "name": "response",
+    "func": "msg.payload = \"success\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 540,
+    "wires": [
+        ["f5c689d9.0c2c78"]
+    ]
+}, {
+    "id": "740c0d01.af07a4",
+    "type": "function",
+    "z": "f584d3bb.6d293",
+    "name": "insert db",
+    "func": "let maQuay = msg.payload.maQuay;\nlet status = msg.payload.danhgia;\nmsg.topic = `INSERT INTO binhchon (maQuay, status) VALUES ('${maQuay}', '${status}');`;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 580,
+    "wires": [
+        ["6d061e31.35b77"]
+    ]
+}, {
+    "id": "6d061e31.35b77",
+    "type": "mysql",
+    "z": "f584d3bb.6d293",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 690,
+    "y": 580,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "5cd2608c.542be",
+    "type": "http in",
+    "z": "f584d3bb.6d293",
+    "name": "",
+    "url": "/ubnd_duclinh_apihailong4",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 190,
+    "y": 660,
+    "wires": [
+        ["bc67b398.7a7a8", "c0d3e0a0.742eb"]
+    ]
+}, {
+    "id": "2cae9a3b.c94a56",
+    "type": "http response",
+    "z": "f584d3bb.6d293",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 670,
+    "y": 640,
+    "wires": []
+}, {
+    "id": "bc67b398.7a7a8",
+    "type": "function",
+    "z": "f584d3bb.6d293",
+    "name": "response",
+    "func": "msg.payload = \"success\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 640,
+    "wires": [
+        ["2cae9a3b.c94a56"]
+    ]
+}, {
+    "id": "c0d3e0a0.742eb",
+    "type": "function",
+    "z": "f584d3bb.6d293",
+    "name": "insert db",
+    "func": "let maQuay = msg.payload.maQuay;\nlet status = msg.payload.danhgia;\nmsg.topic = `INSERT INTO binhchon (maQuay, status) VALUES ('${maQuay}', '${status}');`;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 680,
+    "wires": [
+        ["b532f593.57fe88"]
+    ]
+}, {
+    "id": "b532f593.57fe88",
+    "type": "mysql",
+    "z": "f584d3bb.6d293",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 690,
+    "y": 680,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "c3e6936c.4b927",
+    "type": "http in",
+    "z": "f584d3bb.6d293",
+    "name": "",
+    "url": "/ubnd_duclinh_apikhonghailong4",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 170,
+    "y": 760,
+    "wires": [
+        ["b64c4af8.503048", "4216c9fc.a4a578"]
+    ]
+}, {
+    "id": "9a982ff.f2152d",
+    "type": "http response",
+    "z": "f584d3bb.6d293",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 670,
+    "y": 740,
+    "wires": []
+}, {
+    "id": "b64c4af8.503048",
+    "type": "function",
+    "z": "f584d3bb.6d293",
+    "name": "response",
+    "func": "msg.payload = \"success\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 740,
+    "wires": [
+        ["9a982ff.f2152d"]
+    ]
+}, {
+    "id": "4216c9fc.a4a578",
+    "type": "function",
+    "z": "f584d3bb.6d293",
+    "name": "insert db",
+    "func": "let maQuay = msg.payload.maQuay;\nlet status = msg.payload.danhgia;\nmsg.topic = `INSERT INTO binhchon (maQuay, status) VALUES ('${maQuay}', '${status}');`;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 780,
+    "wires": [
+        ["1654feb.7e08501"]
+    ]
+}, {
+    "id": "1654feb.7e08501",
+    "type": "mysql",
+    "z": "f584d3bb.6d293",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 690,
+    "y": 780,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "b62f0d4d.e7f57",
+    "type": "http in",
+    "z": "a10686a2.ef2738",
+    "name": "",
+    "url": "/ubnd_duclinh_reportapi",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 160,
+    "y": 20,
+    "wires": [
+        ["5b82372a.dd2278"]
+    ]
+}, {
+    "id": "5ad70ff.0b3ecf",
+    "type": "http response",
+    "z": "a10686a2.ef2738",
+    "name": "",
+    "statusCode": "",
+    "headers": {
+        "content-type": "application/json"
+    },
+    "x": 930,
+    "y": 20,
+    "wires": []
+}, {
+    "id": "cb3372f1.97799",
+    "type": "mysql",
+    "z": "a10686a2.ef2738",
+    "mydb": "41704b59.03c774",
+    "name": "",
+    "x": 690,
+    "y": 20,
+    "wires": [
+        ["5ad70ff.0b3ecf"]
+    ]
+}, {
+    "id": "5b82372a.dd2278",
+    "type": "function",
+    "z": "a10686a2.ef2738",
+    "name": "query mysql",
+    "func": "let _startDate = msg.payload._startDate;\nlet _endDate = msg.payload._endDate;\nmsg.topic = \"SELECT bc.status AS 'danhgia', CASE WHEN bc.`maQuay` like 'quayso1' then 'Quầy số 1' WHEN bc.`maQuay` like 'quayso2' then 'Quầy số 2' WHEN bc.`maQuay` like 'quayso3' then 'Quầy số 3' WHEN bc.`maQuay` like 'quayso4' then 'Quầy số 4' ELSE '' END AS 'maquay', DATE_FORMAT(bc.ngayTao, '%d-%m-%Y') AS 'ngaythangnam', DATE_FORMAT(bc.ngayTao, '%H:%i:%s') AS 'thoigian' FROM binhchon bc WHERE DATE(bc.ngayTao) BETWEEN '\"+_startDate+\"' AND '\"+_endDate+\"' ORDER BY bc.ngayTao DESC;\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 450,
+    "y": 20,
+    "wires": [
+        ["cb3372f1.97799"]
+    ]
+}, {
+    "id": "6372a47e.108a1c",
+    "type": "users_isloggedin",
+    "z": "e3414c8a.71b97",
+    "name": "",
+    "enableCustomHandler": true,
+    "outputs": 2,
+    "x": 390,
+    "y": 200,
+    "wires": [
+        ["b28b9cab.e1197"],
+        ["612a8c4d.7a87c4"]
+    ]
+}, {
+    "id": "c9f2bdef.a2659",
+    "type": "http in",
+    "z": "e3414c8a.71b97",
+    "name": "",
+    "url": "/ubnd_duclinh_baocao",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 180,
+    "y": 200,
+    "wires": [
+        ["6372a47e.108a1c"]
+    ]
+}, {
+    "id": "29df3107.951c8e",
+    "type": "template",
+    "z": "e3414c8a.71b97",
+    "name": "for admins only",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "<html>\n    <head>\n        <link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">\n        <script src=\"https://code.jquery.com/jquery-3.5.1.js\" integrity=\"sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=\" crossorigin=\"anonymous\"></script>\n        <title>Báo cáo đánh giá</title>\n        <style>\n            * {\n                color: #fff;\n            }\n            h1 {\n                font-size: 120px;\n                color: #fff;\n                padding: 20px;\n            }\n        </style>\n    </head>\n    <body>\n        <div class=\"w3-container\">\n\n    <div class=\"w3-bar w3-light-grey\">\n    <div class=\"w3-dropdown-hover\">\n      <button class=\"w3-button\">Welcome {{payload.user.username}}</button>\n      <div class=\"w3-dropdown-content w3-bar-block w3-card-4\">\n        <a href=\"/dangxuat\" class=\"w3-bar-item w3-button\">Logout</a>\n      </div>\n    </div>\n  </div>\n  <div style=\"text-align: center; background: #010203;\">\n      <h1>WELCOME!!!</h1>\n        <h2>User: {{payload.user.username}}</h2>\n        <h2>Scope: {{payload.user.scope}}</h2>\n  </div>\n</div>\n        \n    </body>\n    <script>\n        $(\"#logout\").click(function(){\n       \n            window.location.href = \"http://localhost:1880/logout?\";\n   \n        });\n    </script>\n</html>",
+    "x": 780,
+    "y": 100,
+    "wires": [
+        ["c75ef64f.1eb678"]
+    ]
+}, {
+    "id": "c75ef64f.1eb678",
+    "type": "http response",
+    "z": "e3414c8a.71b97",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 1030,
+    "y": 100,
+    "wires": []
+}, {
+    "id": "128ed7f9.0c40a8",
+    "type": "template",
+    "z": "e3414c8a.71b97",
+    "name": "for allowed users only",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "<html>\n\n<head>\n    <title>Báo cáo đánh giá</title>\n    <meta charset='utf-8'>\n    <meta http-equiv='X-UA-Compatible' content='IE=edge'>\n    <meta name='viewport' content='width=device-width, initial-scale=1'>\n    <script type=\"text/javascript\" src=\"https://unpkg.com/tabulator-tables@4.0.5/dist/js/tabulator.min.js\"></script>\n    <script type=\"text/javascript\" src=\"https://oss.sheetjs.com/sheetjs/xlsx.full.min.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.0.5/jspdf.plugin.autotable.js\"></script>\n    <script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/jquery/latest/jquery.min.js\"></script>\n    <script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\n    <script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\n    <link href=\"https://unpkg.com/tabulator-tables@4.0.5/dist/css/tabulator.min.css\" rel=\"stylesheet\">\n    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\"\n        integrity=\"sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN\" crossorigin=\"anonymous\">\n    <link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">\n\n    <style>\n        .divtitle {\n            text-align: center;\n        }\n\n        .button {\n            border: none;\n            color: white;\n            text-align: center;\n            text-decoration: none;\n            display: inline-block;\n            font-size: 16px;\n            font-weight: bold;\n            border-radius: 5px;\n            transition-duration: 0.4s;\n            outline: none;\n        }\n\n        .button:hover {\n            cursor: pointer;\n            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);\n        }\n\n        .header {\n            display: flex;\n            align-items: center;\n            flex-direction: row;\n            color: #D71921;\n            font-size: 35px;\n            font-weight: bold;\n            text-align: center;\n            text-shadow: 2px 2px 2px #a9acac;\n            justify-content: center;\n            width: 100%;\n            height: 100px;\n            padding: 10px;\n            background-image: linear-gradient(#0b92ca, #7cdaff00);\n        }\n\n        body {\n            background-image: linear-gradient(#f3eebb00, #6acbf2de);\n        }\n    </style>\n</head>\n\n<body>\n    <div class=\"header\">\n        <img src=\"http://192.168.1.172:3000/images/logo_binhthuan.jpg\" height=\"100px\" />\n        UBND HUYỆN ĐỨC LINH - BÁO CÁO ĐÁNH GIÁ KHÁCH HÀNG\n    </div>\n    <div class=\"w3-container\">\n\n        <div class=\"w3-bar w3-light-grey\" style=\"background-color: transparent !important;\">\n            <div class=\"w3-dropdown-hover\" style=\"background-color: transparent !important;\">\n                <button class=\"w3-button\"\n                    style=\"background-color: transparent !important; font-weight: bold; text-shadow: #666;\">Chào mừng:\n                    {{payload.user.username}}</button>\n                <div class=\"w3-dropdown-content w3-bar-block w3-card-4\">\n                    <a href=\"/ubnd_duclinh_dangxuat\" class=\"w3-bar-item w3-button\">Đăng xuất</a>\n                </div>\n            </div>\n        </div>\n\n        <div style=\"display: flex; margin-left: auto; margin-right: auto; padding-bottom: 10px;\">\n            <div id=\"reportrange\"\n                style=\"text-align: center;background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 30%\">\n                <i class=\"fa fa-calendar\"></i>&nbsp;\n                <span></span> <i class=\"fa fa-caret-down\"></i>\n            </div>\n            <div style=\"width: 40%; height: 30px; display: flex; padding-left: 20px;\">\n                <div style=\"padding-right: 5px;\">\n                    <button class=\"button\" id=\"ajax-trigger\" style=\"height: 100%; background-color:#4CAF50;\">Xem dữ\n                        liệu</button>\n                </div>\n\n                <div>\n                    <button class=\"button\" id=\"download-xlsx\" style=\"height: 100%; background-color: #008CBA;\">Xuất\n                        Excel</button>\n                </div>\n\n            </div>\n\n        </div>\n        <div id=\"example-table\" style=\"margin-bottom: 10px;\"></div>\n\n    </div>\n\n</body>\n<script>\n    let _startDate;\n    let _endDate;\n\n    //Date range picker\n    $(function () {\n\n        var start = moment().subtract(29, 'days');\n        var end = moment();\n\n        function cb(start, end) {\n            $('#reportrange span').html(start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY'));\n            _startDate = $('#reportrange').data('daterangepicker').startDate.format('YYYY-MM-DD');\n            _endDate = $('#reportrange').data('daterangepicker').endDate.format('YYYY-MM-DD');\n        }\n\n        $('#reportrange').daterangepicker({\n            \"locale\": {\n                \"format\": \"DD/MM/YYYY\",\n                \"separator\": \" - \",\n                \"applyLabel\": \"Chọn\",\n                \"cancelLabel\": \"Hủy\",\n                \"fromLabel\": \"Từ\",\n                \"toLabel\": \"Đến\",\n                \"customRangeLabel\": \"Tùy chọn\",\n                \"daysOfWeek\": [\n                    \"CN\",\n                    \"T2\",\n                    \"T3\",\n                    \"T4\",\n                    \"T5\",\n                    \"T6\",\n                    \"T7\"\n                ],\n                \"monthNames\": [\n                    \"Tháng 1\",\n                    \"Tháng 2\",\n                    \"Tháng 3\",\n                    \"Tháng 4\",\n                    \"Tháng 5\",\n                    \"Tháng 6\",\n                    \"Tháng 7\",\n                    \"Tháng 8\",\n                    \"Tháng 9\",\n                    \"Tháng 10\",\n                    \"Tháng 11\",\n                    \"Tháng 12\"\n                ],\n                \"firstDay\": 1\n            },\n            startDate: start,\n            endDate: end,\n            ranges: {\n                'Hôm nay': [moment(), moment()],\n                'Hôm qua': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],\n                '7 ngày qua': [moment().subtract(6, 'days'), moment()],\n                '30 ngày qua': [moment().subtract(29, 'days'), moment()],\n                'Tháng này': [moment().startOf('month'), moment().endOf('month')],\n                'Tháng trước': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]\n            }\n        }, cb);\n\n        cb(start, end);\n\n    });\n\n    //Build Tabulator\n    var table = new Tabulator(\"#example-table\", {\n        height: \"700px\",\n        layout: \"fitColumns\",\n        placeholder: \"Không có dữ liệu\",\n        columns: [\n            { title: \"Đánh Giá\", field: \"danhgia\", sorter: \"string\", hozAlign: \"center\", bottomCalc: \"count\", headerFilter: \"input\", headerFilterPlaceholder: \"Nhập 'không' để lọc đánh giá Không hài lòng\" },\n            { title: \"Quầy\", field: \"maquay\", sorter: \"string\", hozAlign: \"center\", headerFilter: \"input\", headerFilterPlaceholder: \"Tìm theo mã quầy\" },\n            { title: \"Ngày Tháng Năm\", field: \"ngaythangnam\", sorter: \"string\", hozAlign: \"center\", headerFilter: \"input\", headerFilterPlaceholder: \"Tìm theo 'ngày-tháng-năm'\" },\n            { title: \"Thời Gian\", field: \"thoigian\", sorter: \"string\", hozAlign: \"center\", headerFilter: \"input\", headerFilterPlaceholder: \"Tìm theo 'giờ:phút:giây'\" },\n        ],\n    });\n\n    //trigger AJAX load on \"Load Data via AJAX\" button click\n    document.getElementById(\"ajax-trigger\").addEventListener(\"click\", async function (e) {\n        /* start ajax submission process */\n        $.ajax({\n            url: \"http://192.168.1.172:1880/ubnd_duclinh_reportapi\", //Chuyển thành link api của server\n            type: \"POST\",\n            data: { _startDate, _endDate },\n            success: function (data, textStatus, jqXHR) {\n                //alert('Success!');\n                //console.log(data);\n                table.setData(data);\n            },\n            error: function (jqXHR, textStatus, errorThrown) {\n                //alert('Error occurred!');\n                console.log(\"Error!\");\n            }\n\n        });\n\n        e.preventDefault(); //STOP default action\n    });\n\n\n\n    //trigger download of data.xlsx file\n    document.getElementById(\"download-xlsx\").addEventListener(\"click\", function () {\n        let filename = _startDate + \"_\" + _endDate;\n        table.download(\"xlsx\", filename + \".xlsx\", { sheetName: filename });\n    });\n</script>\n\n</html>",
+    "x": 800,
+    "y": 180,
+    "wires": [
+        ["f5ccea40.437548"]
+    ]
+}, {
+    "id": "f5ccea40.437548",
+    "type": "http response",
+    "z": "e3414c8a.71b97",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 1030,
+    "y": 180,
+    "wires": []
+}, {
+    "id": "b28b9cab.e1197",
+    "type": "switch",
+    "z": "e3414c8a.71b97",
+    "name": "check user scope",
+    "property": "payload.user.scope",
+    "propertyType": "msg",
+    "rules": [{
+        "t": "eq",
+        "v": "admin",
+        "vt": "str"
+    }, {
+        "t": "else"
+    }],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 550,
+    "y": 140,
+    "wires": [
+        ["29df3107.951c8e"],
+        ["128ed7f9.0c40a8"]
+    ]
+}, {
+    "id": "612a8c4d.7a87c4",
+    "type": "template",
+    "z": "e3414c8a.71b97",
+    "name": "custom login page",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "<html lang=\"en\">\n\n<head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta name=\"apple-mobile-web-app-capable\" content=\"yes\">\n    <meta name=\"mobile-web-app-capable\" content=\"yes\">\n    <style>\n        * {\n            box-sizing: border-box;\n        }\n\n        html {\n            height: 100%;\n        }\n\n        body {\n            margin: 0;\n            height: 100%;\n            font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\";\n            font-size: 15px;\n            background-image: linear-gradient(#f3eebb00, #6acbf2de);\n        }\n\n        .form-group {\n            margin-bottom: 15px;\n        }\n\n        .form-group input {\n            width: 100%;\n            border-radius: 5px;\n            display: block;\n            width: 100%;\n            height: 40px;\n            padding: 6px 12px;\n            font-size: 14px;\n            line-height: 1.42857143;\n            color: rgb(7, 7, 7);\n            outline: 0;\n            border: 1px solid #ddd;\n        }\n\n        .login-wrapper>a,\n        button {\n            text-decoration: none;\n            cursor: pointer;\n            background-color: #0b92ca;\n            color: #f3f5f6;\n            transition: color 0.2s, background-color 0.2s;\n            text-align: center;\n            padding: 15px 60px;\n            font-size: 1.2rem;\n            display: inline-block;\n            margin-bottom: 1rem;\n            font-weight: bold;\n            text-transform: uppercase;\n            outline: none;\n            border: none !important;\n            border-radius: 5px;\n            transition-duration: 0.4s;\n            box-shadow: 0 2px #999;\n        }\n\n        .login-wrapper>a:hover,\n        .login-wrapper>a:active {\n            border: none;\n            color: white;\n            text-align: center;\n            text-decoration: none;\n            display: inline-block;\n            font-weight: bold;\n            outline: none;\n            box-shadow: 0 5px #999;\n        }\n\n        button:hover {\n            background-color: #07709c;\n            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);\n        }\n\n        .button:active {\n            background-color: #07709c;\n            box-shadow: 0 5px #666;\n            transform: translateY(4px);\n        }\n\n        .login-wrapper {\n            position: absolute;\n            padding: 15px;\n            padding-bottom: 0;\n            margin: 0 auto;\n            width: 400px;\n            color: #EFF0F1;\n            text-align: center;\n            left: calc(50% - 200px);\n            top: calc(50% - 200px);\n            border: solid;\n            border-color: #07709c;\n            border-radius: 5px;\n            text-shadow: 2px 2px 2px #666;\n        }\n\n        .response {\n            margin-top: 10px;\n            padding: 15px;\n            color: #fff;\n            border-radius: 2px;\n        }\n\n        .response.success {\n            background-color: #51b385;\n            border-color: #63bb92;\n            border-radius: 5px;\n        }\n\n        .response.error {\n            background-color: #c11532;\n            border-color: #c11532;\n            border-radius: 5px;\n        }\n\n        @media (max-width: 768px) {\n            .login-wrapper {\n                width: 100%;\n                left: 0;\n                top: 100px;\n                padding: 15px 30px;\n            }\n        }\n\n        .header {\n            display: flex;\n            align-items: center;\n            flex-direction: row;\n            color: #D71921;\n            font-size: 35px;\n            font-weight: bold;\n            text-align: center;\n            text-shadow: 2px 2px 2px #a9acac;\n            justify-content: center;\n            width: 100%;\n            height: 100px;\n            padding: 10px;\n            background-image: linear-gradient(#0b92ca, #7cdaff00);\n        }\n    </style>\n    <title>Báo cáo đánh giá</title>\n</head>\n\n<body onload=\"checkCookie()\">\n    <div class=\"header\">\n        <img src=\"http://192.168.1.172:3000/images/logo_binhthuan.jpg\" height=\"100px\" />\n        UBND HUYỆN ĐỨC LINH - BÁO CÁO ĐÁNH GIÁ KHÁCH HÀNG\n    </div>\n    <div class=\"login-wrapper\">\n        <h1 style=\"color: rgb(13, 27, 228) !important;\">Đăng Nhập</h1>\n        <form id=\"login-form\">\n            <div class=\"form-group\">\n                <input type=\"text\" name=\"username\" placeholder=\"Tên người dùng\" required />\n            </div>\n            <div class=\"form-group\">\n                <input type=\"password\" name=\"password\" placeholder=\"Mật khẩu\" required />\n            </div>\n            <button type=\"submit\">OK</button>\n            <div class=\"response\"></div>\n        </form>\n\n    </div>\n\n    <script src=\"http://code.jquery.com/jquery-3.3.1.min.js\"></script>\n    <script>\n        var responseTimer;\n        function checkCookie() {\n            document.cookie = \"nr.nodeUsers.jwt=\";\n        }\n\n        function showResponse(message, type) {\n            $(\".response\").text(message);\n            $(\".response\").removeClass(\"success\").removeClass(\"error\").addClass(type).show();\n\n            clearTimeout(responseTimer);\n            responseTimer = setTimeout(function () {\n                $(\".response\").fadeOut();\n            }, 4000);\n        }\n\n        function getParameterByName(name) {\n            var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);\n            return match && decodeURIComponent(match[1].replace(/\\+/g, ' '));\n        }\n\n        $(\"#login-form\").submit(function (e) {\n            e.preventDefault();\n            var username = $(this).find(\"input[name=username]\").val();\n            var password = $(this).find(\"input[name=password]\").val();\n            var cred = {\n                username: username,\n                password: password\n            };\n            $.post('/users', cred).done(function () {\n                showResponse(\"Đăng nhập thành công! Đang chuyển hướng...\", \"success\");\n                setTimeout(function () {\n                    window.location = '/ubnd_duclinh_baocao';\n                }, 2000);\n            }).fail(function (xhr) {\n                var msg = \"\";\n                switch (xhr.status) {\n                    case 0:\n                        msg = \"Lỗi kết nối tới máy chủ.\";\n                        break;\n                    case 401:\n                        msg = \"Lỗi chứng thực.\";\n                        break;\n                    default:\n                        msg = \"Lỗi máy chủ không xác định được.\";\n                }\n                showResponse(msg, \"error\");\n            });\n        });\n    </script>\n\n</body>\n\n</html>",
+    "x": 570,
+    "y": 300,
+    "wires": [
+        ["a4bb28ee.8fe858"]
+    ]
+}, {
+    "id": "a4bb28ee.8fe858",
+    "type": "http response",
+    "z": "e3414c8a.71b97",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 1030,
+    "y": 300,
+    "wires": []
+}, {
+    "id": "7a457b80.2f34f4",
+    "type": "comment",
+    "z": "e3414c8a.71b97",
+    "name": "User unauthorized, show login page",
+    "info": "",
+    "x": 620,
+    "y": 260,
+    "wires": []
+}, {
+    "id": "6dd28366.ebac9c",
+    "type": "comment",
+    "z": "e3414c8a.71b97",
+    "name": "User authorized, allow through",
+    "info": "",
+    "x": 580,
+    "y": 60,
+    "wires": []
+}, {
+    "id": "bf84d350.66bc6",
+    "type": "http in",
+    "z": "e3414c8a.71b97",
+    "name": "",
+    "url": "/ubnd_duclinh_dangxuat",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 220,
+    "y": 300,
+    "wires": [
+        ["612a8c4d.7a87c4"]
+    ]
+}]

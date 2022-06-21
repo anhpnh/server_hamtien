@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/danhgia.css">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/fontawesome.min.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="header">
+            <img src="http://192.168.1.172:3000/images/logo_binhthuan.jpg" height="100px" />
+            UBND PHƯỜNG HÀM TIẾN - ĐÁNH GIÁ CỦA KHÁCH HÀNG
+        </div>
+        <div class="titlenumber">
+            QUẦY SỐ 5
+        </div>
+        <div>
+            <h2 style="font-size: 25px; color: #120ed4; text-shadow: 1px 1px 1px #666;">Bạn có hài lòng với dịch vụ của
+                chúng tôi?</h2>
+        </div>
+        <div class="block"></div>
+        <div class="danhgia">
+            <table cellspacing="20">
+                <tr>
+                    <td><button class="btn" id="hailong">Hài lòng</button>
+                    </td>
+                    <td><button class="btn" id="khonghailong">Không hài lòng</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="loading" style="display:none">
+            <h2
+                style="margin-top: 20px; text-align: center; font: 25px; font-weight: bold; text-shadow: 1px 1px 1px #666; color: #120ed4;">
+                Cảm ơn sự đánh giá của bạn. Xin
+                hẹn gặp lại!</h2>
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
+<script>
+    let host = "192.168.1.172:1880/"; //Thay đổi theo IP của server
+    let apihailong = "http://" + host + "ubnd_hamtien_apihailong5"; //Thay đổi theo api từng quầy
+    let apikhonghailong = "http://" + host + "ubnd_hamtien_apikhonghailong5"; //Thay đổi theo api từng quầy
+    let maQuay = "quayso5"; //Thay đổi theo mã quầy
+    let message = "Cảm ơn sự đánh giá của quý khách!";
+
+    //Gọi lên server socket io
+    let socket = io("/");
+
+    $(document).ready(() => {
+        console.log("ready!!!");
+        //Xy ly khi bam Button Hai Long
+        $('#hailong').click(function (e) {
+            e.preventDefault();
+            $("#hailong").trigger("blur");
+            $(document).ajaxStart(function () {
+                $("#loading").show();
+            });
+            $("#hailong").attr("disabled", true);
+
+            $.ajax({
+                url: apihailong,
+                data: {
+                    "maQuay": maQuay,
+                    "danhgia": "Hài lòng"
+                },
+                type: 'POST',
+                success: function (data) {
+                    $("#hailong").removeAttr("disabled");
+                },
+                error: () => {
+                    alert("Lỗi kết nối tới máy chủ");
+                }
+            });
+            $('#loading').delay(3000).fadeOut('slow');
+
+
+        });
+
+        //Xy ly khi bam Button Khong Hai Long
+        $('#khonghailong').click(function (e) {
+            e.preventDefault();
+            $(document).ajaxStart(function () {
+                $("#loading").show();
+            });
+            $("#khonghailong").attr("disabled", true);
+            $.ajax({
+                url: apikhonghailong,
+                data: {
+                    "maQuay": maQuay,
+                    "danhgia": "Không hài lòng"
+                },
+                type: 'POST',
+                success: function (data) {
+                    $("#khonghailong").removeAttr("disabled");
+                },
+                error: () => {
+                    alert("Lỗi kết nối tới máy chủ");
+                }
+            });
+            $('#loading').delay(3000).fadeOut('slow');
+
+
+        });
+    })
+</script>
+
+</html>
